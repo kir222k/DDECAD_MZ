@@ -30,7 +30,13 @@ namespace DDECAD.MZ
     /// Запускаемый класс - точка входа.
     /// При загрузке данной dll в AutoCAD выполняется код в методе IExtensionApplication.Initialize()
     /// </summary>
+#if !ac21
     public class InitSelf : IExtensionApplication
+#else
+ public class InitSelf 
+#endif
+
+
     {
 
         /// <summary>
@@ -38,7 +44,14 @@ namespace DDECAD.MZ
         /// для запуска своих методов при загрузке dll в acad
         /// через команду _netload дописать здесь свой код 
         /// </summary>
+        
+#if !ac21
         void IExtensionApplication.Initialize()
+#else 
+        [CommandMethod("ddeinit")]
+        public void InitApp ()
+#endif
+
         {
             // Вывод данных о приложении в ком строку AutoCAD
             InitThis.InitOne();
@@ -49,6 +62,11 @@ namespace DDECAD.MZ
 
         }
 
+        //#if true
+
+//#endif
+
+#if !ac21
         /// <summary>
         /// Метод, выполняемый при выгрузке плагина
         /// в нашем случае, при выгрузке экземляра acad.exe
@@ -58,6 +76,7 @@ namespace DDECAD.MZ
 
 
         }
+#endif
 
         /// <summary>
         /// Дествия при загрузки сборки.
@@ -72,14 +91,14 @@ namespace DDECAD.MZ
                 // Сообщение в ком строку AutoCAD
                 AcadSendMess AcSM = new AcadSendMess();
                 AcSM.SendStringDebugStars(new List<string>
-            {
-                "DDECAD-MZ - Загружено",
-                "С# 8.0, VS2019, API .NET AutoCAD",
+                    {
+                        "DDECAD-MZ - Загружено",
+                        "С# 8.0, VS2019, API .NET AutoCAD",
                 
-            });
+                    });
 
                 // Регистрация сборок в автозагрузке AutoCAD.
-                RegtoolsCMDF RegCMD = new RegtoolsCMDF("DDECAD-MZ");
+                RegtoolsCMDF RegCMD = new RegtoolsCMDF(Constantes.ConstNameCustomApp);
 
                 // Проверка регистрации сборки в автозагрузке AutoCAD.
                 RegGeneric RegGen = new RegGeneric();
@@ -121,12 +140,12 @@ namespace DDECAD.MZ
                 // если файла usercadr.ini нет в папке /sys, то загрузка в соотв. с настройками cadr.ini (кот. исп. при инсталяции)
                 // usercadr.ini создается при первой запуске окна настроек, или при "сбросить" в онке настроек (заново создается)
 
-                #region ЛЕНТА
+#region ЛЕНТА
                 // Загрузка выполняется в методе 
                 // AcadComponentManager_ItemInitialized
                 // Перезагрузка при смене раб. пр. - в методе
                 // AcadSysVarChangedEvHr_WSCURRENT
-                #endregion
+#endregion
 
 
                 // Меню
