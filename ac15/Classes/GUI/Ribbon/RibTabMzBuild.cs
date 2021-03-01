@@ -16,6 +16,7 @@ using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 using TIExCAD;
 using TIExCAD.Generic;
+using DDECAD.MZ;
 
 namespace DDECAD.MZ
 
@@ -121,8 +122,9 @@ internal static class RibbonTabButtonHandlers
 {
     internal static void MzSticksFormShow()
     {
-        AcadSendMess AcSM = new AcadSendMess();
-        AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzSticksFormShow" });
+        //AcadSendMess AcSM = new AcadSendMess();
+        //AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzSticksFormShow" });
+        ViewBaseControl.ViewBaseCreate();
     }
 
     internal static void MzZonesFormShow()

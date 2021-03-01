@@ -30,27 +30,28 @@ namespace DDECAD.MZ
     /// Запускаемый класс - точка входа.
     /// При загрузке данной dll в AutoCAD выполняется код в методе IExtensionApplication.Initialize()
     /// </summary>
-#if !ac21
+//#if !ddac21
     public class InitSelf : IExtensionApplication
-#else
- public class InitSelf 
-#endif
-
-
     {
+//#else
+//    public class InitSelf // : IExtensionApplication
+//    {
+//#endif
+
+
 
         /// <summary>
         /// Инициализация.
         /// для запуска своих методов при загрузке dll в acad
         /// через команду _netload дописать здесь свой код 
         /// </summary>
-        
-#if !ac21
+//#if !ddac21
         void IExtensionApplication.Initialize()
-#else 
-        [CommandMethod("ddeinit")]
-        public void InitApp ()
-#endif
+//#else
+        //[CommandMethod("ddeinit")]
+        //public void InitApp()
+        ////void IExtensionApplication.Initialize()
+//#endif
 
         {
             // Вывод данных о приложении в ком строку AutoCAD
@@ -64,9 +65,9 @@ namespace DDECAD.MZ
 
         //#if true
 
-//#endif
+        //#endif
 
-#if !ac21
+//#if !ddac21
         /// <summary>
         /// Метод, выполняемый при выгрузке плагина
         /// в нашем случае, при выгрузке экземляра acad.exe
@@ -76,15 +77,35 @@ namespace DDECAD.MZ
 
 
         }
-#endif
+//#endif
+    }
 
-        /// <summary>
-        /// Дествия при загрузки сборки.
-        /// </summary>
-        /// <remarks>Подключение обработчиков основных событий, 
-        /// Загрузка интерфейса пользователя,
-        /// чтение ini-файлов, выполнение затем каких-то настроек и др.</remarks>
-        internal static class InitThis
+
+//#if ac21
+    public class TestAcadSend
+    {
+        [CommandMethod("ddetest")]
+        public void TestSendRun()
+        {
+            // Сообщение в ком строку AutoCAD
+            AcadSendMess AcSM = new AcadSendMess();
+            AcSM.SendStringDebugStars(new List<string>
+                    {
+                        "DDECAD-MZ - TestSendRun",
+                        "!С# 8.0, VS2019, API .NET AutoCAD!",
+
+                    });
+        }
+    }
+//#endif
+
+/// <summary>
+/// Дествия при загрузки сборки.
+/// </summary>
+/// <remarks>Подключение обработчиков основных событий, 
+/// Загрузка интерфейса пользователя,
+/// чтение ini-файлов, выполнение затем каких-то настроек и др.</remarks>
+internal static class InitThis
         {
             internal static void InitOne()
             {
@@ -154,5 +175,5 @@ namespace DDECAD.MZ
             }
 
         }
-    }
+    
 }
