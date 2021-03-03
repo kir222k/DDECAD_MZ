@@ -39,7 +39,6 @@ namespace DDECAD.MZ
 //#endif
 
 
-
         /// <summary>
         /// Инициализация.
         /// для запуска своих методов при загрузке dll в acad
