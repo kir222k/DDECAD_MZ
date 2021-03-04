@@ -88,8 +88,8 @@
     <Compile Include="Classes\GUI\Windows\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\GUI\Windows\MzAddStick.xaml.cs">
-      <DependentUpon>MzAddStick.xaml</DependentUpon>
+    <Compile Include="Classes\GUI\Windows\MzBaseWindow.xaml.cs">
+      <DependentUpon>MzBaseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Init.cs" />
     <Compile Include="Classes\Sys\Constantes.cs" />
@@ -115,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Classes\GUI\Windows\MzAddStick.xaml">
+    <Page Include="Classes\GUI\Windows\MzBaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

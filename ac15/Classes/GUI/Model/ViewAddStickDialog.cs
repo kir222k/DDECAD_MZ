@@ -44,7 +44,7 @@ namespace DDECAD.MZ.GUI.Model
 
             /*
              * Autodesk.Windows.TaskDialog
-            var AcWincMzAddStick = new MzAddStick();
+            var AcWincMzAddStick = new M();
 
             System.Windows.Window AcWind = new DialogWindow();
             AcWind.Content = AcWincMzAddStick;

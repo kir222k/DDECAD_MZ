@@ -19,14 +19,14 @@ public delegate void MzAddStickDelegate();
 namespace DDECAD.MZ.Classes.GUI.Windows
 {
     /// <summary>
-    /// Interaction logic for MzAddStick.xaml
+    /// Interaction logic for M.xaml
     /// </summary>
-    public partial class MzAddStick : UserControl
+    public partial class MzBaseWindow : UserControl
     {
         // объявление события:
         public event MzAddStickDelegate EventAddStick;
 
-        public MzAddStick()
+        public MzBaseWindow()
         {
             InitializeComponent();
         }

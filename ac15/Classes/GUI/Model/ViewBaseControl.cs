@@ -26,7 +26,7 @@ namespace DDECAD.MZ.GUI.Model
     {
         internal static void ViewBaseCreate()
         {
-            var AcWincMzAddStick = new MzAddStick();
+            var BaseWindow = new MzBaseWindow();
             
             // вставка экз. контрола в палитру
             ElementHost host = new ElementHost(); //  какой-то объект
@@ -34,18 +34,25 @@ namespace DDECAD.MZ.GUI.Model
             host.AutoSize = true;
             host.Dock = DockStyle.Fill;
             //// вставка в какой-то объект нашего контрола 
-            host.Child = AcWincMzAddStick;
-            
-            /*
-            CustomPalette CustPall = new CustomPalette("DDECAD-MZ", "AddMzStick", 700, 900);
-            PaletteSet AcWind = CustPall.GetPaletteSetCustom(AcWincMzAddStick);
-            */
-            
+            host.Child = BaseWindow;
+
             var AcWind = new acad.Windows.PaletteSet("DDECAD-MZ")
             {
                 DockEnabled = (DockSides)((int)DockSides.Left + (int)DockSides.Right),
                 Text = "Text",
                 RolledUp = true,
+                //WindowState = Window.State.Minimized
+                Style=PaletteSetStyles.NoTitleBar |
+                    PaletteSetStyles.ShowCloseButton |
+                    PaletteSetStyles.ShowPropertiesMenu |
+                    PaletteSetStyles.ShowAutoHideButton //|
+                    //PaletteSetStyles.PauseAutoRollupForChildModalDialog |
+                    //PaletteSetStyles.NameEditable |
+                   // PaletteSetStyles.SingleColDock |
+                    //PaletteSetStyles.SingleRowDock |
+                    //PaletteSetStyles.Snappable 
+                    
+
             };
 
             // объект размера
@@ -62,9 +69,9 @@ namespace DDECAD.MZ.GUI.Model
             // показываем палитру
             AcWind.Visible = true;
 
-            // Подпишем наш метод на событие в форме MzAddStick
+            // Подпишем наш метод на событие в форме M
             MzAddStickDelegate MzAddStickDel = new MzAddStickDelegate(AddStickRealisation);
-            AcWincMzAddStick.EventAddStick += MzAddStickDel;
+            BaseWindow.EventAddStick += MzAddStickDel;
         }
 
         internal static void AddStickRealisation()
@@ -73,7 +80,7 @@ namespace DDECAD.MZ.GUI.Model
             AcSM.SendStringDebugStars(new List<string>
                     {
                         "AddStickRealisation",
-                        "MzAddStick",
+                        "M",
                         "New Text"
 
                     });
