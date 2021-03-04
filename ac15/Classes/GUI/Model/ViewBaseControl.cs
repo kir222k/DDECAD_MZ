@@ -20,40 +20,47 @@ using DDECAD.MZ.Classes.GUI.Windows;
 
 using TIExCAD.Generic;
 
-namespace DDECAD.MZ
+namespace DDECAD.MZ.GUI.Model
 {
     internal static class ViewBaseControl 
     {
         internal static void ViewBaseCreate()
         {
-           // IntPtr intPtr =  Marshal.StringToHGlobalAnsi("SreingPr");
-            var AcWind = new acad.Windows.PaletteSet("Base");
-            AcWind.DockEnabled = (DockSides)((int)DockSides.Left + (int)DockSides.Right);
-
             var AcWincMzAddStick = new MzAddStick();
+            
             // вставка экз. контрола в палитру
             ElementHost host = new ElementHost(); //  какой-то объект
-                                                  // настройка какого-то объекта
+            //// настройка какого-то объекта
             host.AutoSize = true;
             host.Dock = DockStyle.Fill;
-            // вставка в какой-то объект нашего контрола 
+            //// вставка в какой-то объект нашего контрола 
             host.Child = AcWincMzAddStick;
-            // добавление какого-то объекта с нашим контролом в палитру
-            AcWind.Add("Добавить МП", host);
-            // объект размера
-            Size sz = new Size
+            
+            /*
+            CustomPalette CustPall = new CustomPalette("DDECAD-MZ", "AddMzStick", 700, 900);
+            PaletteSet AcWind = CustPall.GetPaletteSetCustom(AcWincMzAddStick);
+            */
+            
+            var AcWind = new acad.Windows.PaletteSet("DDECAD-MZ")
             {
-                Width = 310,
-                Height = 500
+                DockEnabled = (DockSides)((int)DockSides.Left + (int)DockSides.Right),
+                Text = "Text",
+                RolledUp = true,
             };
+
+            // объект размера
+            Size sz = new Size { Width = 310, Height = 500 };
             // передача размеров палитре
             AcWind.SetSize(sz);
+
+            // добавление какого-то объекта с нашим контролом в палитру
+            AcWind.Add("Добавить МП", host);
+            
 
             // задаем  фокус на палитру
             AcWind.KeepFocus = true;
             // показываем палитру
             AcWind.Visible = true;
-
 
             // Подпишем наш метод на событие в форме MzAddStick
             MzAddStickDelegate MzAddStickDel = new MzAddStickDelegate(AddStickRealisation);
@@ -67,10 +74,13 @@ namespace DDECAD.MZ
                     {
                         "AddStickRealisation",
                         "MzAddStick",
+                        "New Text"
 
                     });
 
         }
+
+
 
     }
 }

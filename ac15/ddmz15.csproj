@@ -82,8 +82,12 @@
   <ItemGroup>
     <Compile Include="Classes\AcadEvents\AcadComponentManagerInit.cs" />
     <Compile Include="Classes\AcadEvents\AcadSystemVarChanged.cs" />
+    <Compile Include="Classes\GUI\Model\ViewAddStickDialog.cs" />
     <Compile Include="Classes\GUI\Model\ViewBaseControl.cs" />
     <Compile Include="Classes\GUI\Ribbon\RibTabMzBuild.cs" />
+    <Compile Include="Classes\GUI\Windows\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\GUI\Windows\MzAddStick.xaml.cs">
       <DependentUpon>MzAddStick.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,7 @@
     <Compile Include="Classes\Sys\Constantes.cs" />
     <Compile Include="Classes\Sys\Enums.cs" />
     <Compile Include="Classes\Sys\StaticObjects.cs" />
+    <Compile Include="Classes\Sys\WindowsCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +111,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Classes\GUI\Windows\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Classes\GUI\Windows\MzAddStick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

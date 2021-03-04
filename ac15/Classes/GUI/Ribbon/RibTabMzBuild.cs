@@ -16,7 +16,7 @@ using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 using TIExCAD;
 using TIExCAD.Generic;
-using DDECAD.MZ;
+using DDECAD.MZ.GUI.Model;
 
 namespace DDECAD.MZ
 

@@ -12,14 +12,14 @@
                         ></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        
         <TextBlock Grid.Row="0" Text="New Stick" FontSize="23" Foreground="Bisque"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    >
             
         </TextBlock>
 
-        <Button Name="ButtonAddStick" Grid.Column="0"  Grid.Row="1"  Click="ButtonAddStick_Click">
-            
+        <Button Name="ButtonAddStick" Grid.Column="0"  Grid.Row="1"  Click="ButtonAddStick_Click">            
         </Button>
             
     </Grid>

@@ -104,11 +104,18 @@
     <Compile Include="..\ac15\Classes\AcadEvents\AcadSystemVarChanged.cs">
       <Link>Classes\AcadEvents\AcadSystemVarChanged.cs</Link>
     </Compile>
+    <Compile Include="..\ac15\Classes\GUI\Model\ViewAddStickDialog.cs">
+      <Link>Classes\GUI\Model\ViewAddStickDialog.cs</Link>
+    </Compile>
     <Compile Include="..\ac15\Classes\GUI\Model\ViewBaseControl.cs">
       <Link>Classes\GUI\Model\ViewBaseControl.cs</Link>
     </Compile>
     <Compile Include="..\ac15\Classes\GUI\Ribbon\RibTabMzBuild.cs">
       <Link>Classes\GUI\Ribbon\RibTabMzBuild.cs</Link>
+    </Compile>
+    <Compile Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml.cs">
+      <Link>Classes\GUI\Windows\DialogWindow.xaml.cs</Link>
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="..\ac15\Classes\GUI\Windows\MzAddStick.xaml.cs">
       <Link>Classes\GUI\Windows\MzAddStick.xaml.cs</Link>
@@ -126,6 +133,9 @@
     <Compile Include="..\ac15\Classes\Sys\StaticObjects.cs">
       <Link>Classes\Sys\StaticObjects.cs</Link>
     </Compile>
+    <Compile Include="..\ac15\Classes\Sys\WindowsCollection.cs">
+      <Link>Classes\Sys\WindowsCollection.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -140,6 +150,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml">
+      <Link>Classes\GUI\Windows\DialogWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="..\ac15\Classes\GUI\Windows\MzAddStick.xaml">
       <Link>Classes\GUI\Windows\MzAddStick.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
