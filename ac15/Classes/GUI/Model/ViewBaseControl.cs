@@ -24,6 +24,8 @@ namespace DDECAD.MZ.GUI.Model
 {
     internal static class ViewBaseControl 
     {
+        //private MzBaseWindow BaseWindow;
+
         internal static void ViewBaseCreate()
         {
             var BaseWindow = new MzBaseWindow();
@@ -35,7 +37,7 @@ namespace DDECAD.MZ.GUI.Model
             host.Dock = DockStyle.Fill;
             //// вставка в какой-то объект нашего контрола 
             host.Child = BaseWindow;
-
+            // 
             var AcWind = new acad.Windows.PaletteSet("DDECAD-MZ")
             {
                 DockEnabled = (DockSides)((int)DockSides.Left + (int)DockSides.Right),
@@ -54,16 +56,12 @@ namespace DDECAD.MZ.GUI.Model
                     
 
             };
-
             // объект размера
             Size sz = new Size { Width = 310, Height = 500 };
             // передача размеров палитре
             AcWind.SetSize(sz);
-
             // добавление какого-то объекта с нашим контролом в палитру
             AcWind.Add("Добавить МП", host);
-            
-
             // задаем  фокус на палитру
             AcWind.KeepFocus = true;
             // показываем палитру

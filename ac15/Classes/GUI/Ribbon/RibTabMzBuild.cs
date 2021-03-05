@@ -17,6 +17,7 @@ using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using TIExCAD;
 using TIExCAD.Generic;
 using DDECAD.MZ.GUI.Model;
+using DDECAD.MZ.Classes.GUI.Windows;
 
 namespace DDECAD.MZ
 
@@ -129,8 +130,16 @@ internal static class RibbonTabButtonHandlers
 
     internal static void MzZonesFormShow()
     {
+        /*
         AcadSendMess AcSM = new AcadSendMess();
         AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzZonesFormShow" });
+        */
+        var BaseWindow = new MzBaseWindow();
+
+        CustomPaletteSetAcad PalSet = new CustomPaletteSetAcad(
+            "DDE",new Guid("A7807F9F-E5EA-449B-840C-AE57491DFE56"), BaseWindow, "Control");
+        PalSet.PaletteSetCreate();
+
     }
 
     internal static void MzExcludeFromRegApp()
