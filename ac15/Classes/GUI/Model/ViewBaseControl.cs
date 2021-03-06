@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.AutoCAD.Windows;
+using AcWin = Autodesk.AutoCAD.Windows;
 using System.Drawing;
+using System.Windows;
+using SysWin = System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using Autodesk.AutoCAD.Runtime;
@@ -17,72 +20,53 @@ using acad = Autodesk.AutoCAD;
 using System.Runtime.Remoting;
 using System.Runtime.InteropServices;
 using DDECAD.MZ.Classes.GUI.Windows;
-
+using DDECAD.MZ;
 using TIExCAD.Generic;
 
 namespace DDECAD.MZ.GUI.Model
 {
-    internal static class ViewBaseControl 
+    internal class ViewBaseControl 
     {
-        //private MzBaseWindow BaseWindow;
 
-        internal static void ViewBaseCreate()
+        internal CustomPaletteSetAcad PalSet;
+        //internal SizePaletteSet SizePal;
+
+
+        /// <summary>
+        /// Создание палитры и подписка на события
+        /// </summary>
+        /// <remarks>Выполняется из Init.cs </remarks>
+        internal  void ViewBaseCreate()
         {
-            var BaseWindow = new MzBaseWindow();
-            
-            // вставка экз. контрола в палитру
-            ElementHost host = new ElementHost(); //  какой-то объект
-            //// настройка какого-то объекта
-            host.AutoSize = true;
-            host.Dock = DockStyle.Fill;
-            //// вставка в какой-то объект нашего контрола 
-            host.Child = BaseWindow;
-            // 
-            var AcWind = new acad.Windows.PaletteSet("DDECAD-MZ")
+            if (PalSet == null)
+            { 
+                var BaseWindow = new MzBaseWindow();
+                // Подпишем наш метод на событие в форме MzBaseWindow
+                MzAddStickEventHandler MzAddStickDel = new MzAddStickEventHandler(AddStickRealisation);
+                BaseWindow.MzAddStickEvent += MzAddStickDel;
+
+                // Создадим палитру и вставим в нее MzBaseWindow
+                //SizePaletteSet SizePal =new SizePaletteSet();
+                PalSet = new CustomPaletteSetAcad(
+                    "DDE", new Guid("A7807F9F-E5EA-449B-840C-AE57491DFE56"), WidthPaletteSet.WidthBig, HeigthPaletteSet.HeightBig, BaseWindow, "Control");
+                PalSet.PaletteSetCreate();
+            }
+            else
             {
-                DockEnabled = (DockSides)((int)DockSides.Left + (int)DockSides.Right),
-                Text = "Text",
-                RolledUp = true,
-                //WindowState = Window.State.Minimized
-                Style=PaletteSetStyles.NoTitleBar |
-                    PaletteSetStyles.ShowCloseButton |
-                    PaletteSetStyles.ShowPropertiesMenu |
-                    PaletteSetStyles.ShowAutoHideButton //|
-                    //PaletteSetStyles.PauseAutoRollupForChildModalDialog |
-                    //PaletteSetStyles.NameEditable |
-                   // PaletteSetStyles.SingleColDock |
-                    //PaletteSetStyles.SingleRowDock |
-                    //PaletteSetStyles.Snappable 
-                    
+                PalSet.PaletteSetCreate();
+            }
 
-            };
-            // объект размера
-            Size sz = new Size { Width = 310, Height = 500 };
-            // передача размеров палитре
-            AcWind.SetSize(sz);
-            // добавление какого-то объекта с нашим контролом в палитру
-            AcWind.Add("Добавить МП", host);
-            // задаем  фокус на палитру
-            AcWind.KeepFocus = true;
-            // показываем палитру
-            AcWind.Visible = true;
 
-            // Подпишем наш метод на событие в форме M
-            MzAddStickDelegate MzAddStickDel = new MzAddStickDelegate(AddStickRealisation);
-            BaseWindow.EventAddStick += MzAddStickDel;
+
         }
 
         internal static void AddStickRealisation()
         {
-            AcadSendMess AcSM = new AcadSendMess();
-            AcSM.SendStringDebugStars(new List<string>
-                    {
-                        "AddStickRealisation",
-                        "M",
-                        "New Text"
+            MzAddStickControl StickControl = new MzAddStickControl();
+            DialogWindow DialWin = new DialogWindow();
 
-                    });
-
+            DialWin.DialWinGrid.Children.Add(StickControl);
+            DialWin.ShowDialog();
         }
 
 

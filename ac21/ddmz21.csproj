@@ -117,6 +117,10 @@
       <Link>Classes\GUI\Windows\DialogWindow.xaml.cs</Link>
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\ac15\Classes\GUI\Windows\MzAddStickControl.xaml.cs">
+      <Link>Classes\GUI\Windows\MzAddStickControl.xaml.cs</Link>
+      <DependentUpon>MzAddStickControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\ac15\Classes\GUI\Windows\MzBaseWindow.xaml.cs">
       <Link>Classes\GUI\Windows\MzBaseWindow.xaml.cs</Link>
       <DependentUpon>MzBaseWindow.xaml</DependentUpon>
@@ -152,6 +156,11 @@
   <ItemGroup>
     <Page Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml">
       <Link>Classes\GUI\Windows\DialogWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\ac15\Classes\GUI\Windows\MzAddStickControl.xaml">
+      <Link>Classes\GUI\Windows\MzAddStickControl.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -16,7 +16,7 @@ using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 using TIExCAD;
 using TIExCAD.Generic;
-using DDECAD.MZ.GUI.Model;
+using DDECAD.MZ.GUI.Model; // DDECAD.MZ.GUI.Model
 using DDECAD.MZ.Classes.GUI.Windows;
 
 namespace DDECAD.MZ
@@ -24,6 +24,13 @@ namespace DDECAD.MZ
 {
     internal class RibbonTabBuildDDEMZ
     {
+
+        private ViewBaseControl ViewBase;
+
+        internal RibbonTabBuildDDEMZ() { }
+        internal RibbonTabBuildDDEMZ (ViewBaseControl viewBasePaletteSet) { ViewBase = viewBasePaletteSet; }
+
+
         /// <summary>
         /// Создание вкладки ленты DDECAD-MZ.
         /// </summary>
@@ -52,11 +59,11 @@ namespace DDECAD.MZ
                 new RibButtonMyFull()
                 {
                     //Текст кнопки.
-                    ribButtonText = "Молниеприемники",
+                    ribButtonText = "Открыть палитру",
                     //Показать текст.
                     showText = true,
                     //Размер кнопки.
-                    ribButtonSize = RibbonItemSize.Large,
+                    ribButtonSize = RibbonItemSize.Standard,
                     //Ориентация кнопки.
                     ribButtonOrientation = Orientation.Vertical,
                     //Показать картинку.
@@ -66,13 +73,13 @@ namespace DDECAD.MZ
                     //Имя файла малой картинки. 
                     ribButtonImageName = "image_standart.png",
                     //Экземпляр делегата
-                    delegateRibBtnEv = RibbonTabButtonHandlers.MzSticksFormShow// GetStaticInfo.SendMessToAcad_test1
+                    delegateRibBtnEv = MzStickFormShowRun// GetStaticInfo.SendMessToAcad_test1
                 },
                 // 2
                 new RibButtonMyFull()
                 {
                     //Текст кнопки.
-                    ribButtonText = "Зоны защиты",
+                    ribButtonText = "Настройки",
                     //Показать текст.
                     showText = true,
                     //Размер кнопки.
@@ -112,6 +119,18 @@ namespace DDECAD.MZ
             CrTabSpeed.CreateOrModifityRibbonTab("DDECAD-MZ", "ddecadmz", "Молниезащита", listBtn);
             #endregion
         }
+
+        internal void MzStickFormShowRun()
+        {
+            if (ViewBase != null)
+                RibbonTabButtonHandlers.MzSticksFormShow(ViewBase);
+            else
+            {
+                AcadSendMess AcSM = new AcadSendMess();
+                AcSM.SendStringDebugStars(new List<string> {"Требуется перезапустить AutoCAD" });
+
+            }
+        }
     }
 }
 
@@ -121,24 +140,24 @@ namespace DDECAD.MZ
 /// </summary>
 internal static class RibbonTabButtonHandlers
 {
-    internal static void MzSticksFormShow()
+    internal static void MzSticksFormShow(ViewBaseControl viewBasePaletteSet)
     {
         //AcadSendMess AcSM = new AcadSendMess();
         //AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzSticksFormShow" });
-        ViewBaseControl.ViewBaseCreate();
+
+        // Создать и показать палитру
+        //var ViewBase = new ViewBaseControl();
+        viewBasePaletteSet.ViewBaseCreate();
+        //viewBasePaletteSet.
     }
 
     internal static void MzZonesFormShow()
     {
-        /*
+        
         AcadSendMess AcSM = new AcadSendMess();
         AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzZonesFormShow" });
-        */
-        var BaseWindow = new MzBaseWindow();
+       
 
-        CustomPaletteSetAcad PalSet = new CustomPaletteSetAcad(
-            "DDE",new Guid("A7807F9F-E5EA-449B-840C-AE57491DFE56"), BaseWindow, "Control");
-        PalSet.PaletteSetCreate();
 
     }
 

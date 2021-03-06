@@ -9,6 +9,7 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.Windows;
 using AdW = Autodesk.Windows;
 using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
+using DDECAD.MZ.GUI.Model;
 
 namespace DDECAD.MZ
 {
@@ -29,13 +30,18 @@ namespace DDECAD.MZ
         /// </summary>
         internal static void AcadComponentManager_ItemInitialized(object sender, Autodesk.Windows.RibbonItemEventArgs e)
         {
+            // Создать и показать палитру
+            var ViewBase = new ViewBaseControl();
+            ViewBase.ViewBaseCreate();
+
+
             // Создать и загрузить вкладку
             //SampleCreateRibbonTabClass2 SampleRibTab =
             //    new SampleCreateRibbonTabClass2();
             //SampleRibTab.TiexTestRibCreate3();
-            RibbonTabBuildDDEMZ RibTab =
-                new RibbonTabBuildDDEMZ();
+            RibbonTabBuildDDEMZ RibTab = new RibbonTabBuildDDEMZ(ViewBase);
             RibTab.RibbonTabBuild();
+
 
 
             // Отключить обработчик загрузки ленты, т.к. он вызвается

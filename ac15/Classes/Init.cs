@@ -18,7 +18,7 @@ using Autodesk.Windows;
 using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using TIExCAD;
 using TIExCAD.Generic;
-
+using DDECAD.MZ.GUI.Model;
 
 
 // This line is not mandatory, but improves loading performances, чтобы это не значило(!)
@@ -53,12 +53,14 @@ namespace DDECAD.MZ
 //#endif
 
         {
+            InitThis InThis = new InitThis();
+
             // Вывод данных о приложении в ком строку AutoCAD
-            InitThis.InitOne();
+            InThis.InitOne();
             // Подключение обработчиков основных событий.
-            InitThis.BasicEventHadlerlersConnect();
+            InThis.BasicEventHadlerlersConnect();
             // Загрузка интерфейса
-            InitThis.LoadUserInterface();
+            InThis.LoadUserInterface();
 
         }
 
@@ -104,9 +106,12 @@ namespace DDECAD.MZ
 /// <remarks>Подключение обработчиков основных событий, 
 /// Загрузка интерфейса пользователя,
 /// чтение ini-файлов, выполнение затем каких-то настроек и др.</remarks>
-internal static class InitThis
+internal class InitThis
         {
-            internal static void InitOne()
+
+        ViewBaseControl ViewBasePaletteSet;
+
+        internal  void InitOne()
             {
                 // Сообщение в ком строку AutoCAD
                 AcadSendMess AcSM = new AcadSendMess();
@@ -140,7 +145,7 @@ internal static class InitThis
             /// <summary>
             /// Подключение обработчиков основных событий.
             /// </summary>
-            internal static void BasicEventHadlerlersConnect()
+            internal  void BasicEventHadlerlersConnect()
             {
                 // 
                 // Подключим автосоздание вкладки ленты.
@@ -154,24 +159,31 @@ internal static class InitThis
 
             }
 
-            internal static void LoadUserInterface()
+            internal  void LoadUserInterface()
             {
 
-                // если файла usercadr.ini нет в папке /sys, то загрузка в соотв. с настройками cadr.ini (кот. исп. при инсталяции)
-                // usercadr.ini создается при первой запуске окна настроек, или при "сбросить" в онке настроек (заново создается)
+            // если файла usercadr.ini нет в папке /sys, то загрузка в соотв. с настройками cadr.ini (кот. исп. при инсталяции)
+            // usercadr.ini создается при первой запуске окна настроек, или при "сбросить" в онке настроек (заново создается)
 
-#region ЛЕНТА
-                // Загрузка выполняется в методе 
-                // AcadComponentManager_ItemInitialized
-                // Перезагрузка при смене раб. пр. - в методе
-                // AcadSysVarChangedEvHr_WSCURRENT
-#endregion
+            #region ЛЕНТА
+
+            // Загрузка выполняется в методе 
+            // AcadComponentManager_ItemInitialized
+            // Перезагрузка при смене раб. пр. - в методе
+            // AcadSysVarChangedEvHr_WSCURRENT
+            #endregion
 
 
-                // Меню
+            // Меню
 
-                // Другие элементы интерфейса
-            }
+            // Другие элементы интерфейса
+
+            // ПАЛИТРА.
+             ViewBasePaletteSet = new ViewBaseControl();
+
+
+
+        }
 
         }
     

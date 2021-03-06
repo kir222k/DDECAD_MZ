@@ -14,27 +14,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 // объявим делегат:
-public delegate void MzAddStickEventHandler();
+public delegate void MzAddStickDoneEventHandler();
 
 namespace DDECAD.MZ.Classes.GUI.Windows
 {
     /// <summary>
-    /// Interaction logic for M.xaml
+    /// Interaction logic for MzAddStickControl.xaml
     /// </summary>
-    public partial class MzBaseWindow : UserControl
+    public partial class MzAddStickControl : UserControl
     {
         // объявление события:
-        public event MzAddStickEventHandler MzAddStickEvent;
+        public event MzAddStickDoneEventHandler MzAddStickDoneEvent;
 
-        public MzBaseWindow()
+        public MzAddStickControl()
         {
             InitializeComponent();
         }
 
-        // Метод для вызова самого события (имя прописать в XAML кнопки Click="<метод>"
-        private  void ButtonAddStick_Click(object sender, RoutedEventArgs e)
+        private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
-            MzAddStickEvent?.Invoke();
+            MzAddStickDoneEvent?.Invoke();
         }
     }
 }
