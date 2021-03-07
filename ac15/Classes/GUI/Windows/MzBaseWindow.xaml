@@ -5,46 +5,119 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDECAD.MZ.Classes.GUI.Windows"
              mc:Ignorable="d" 
-             >
-    <Grid Name="GridBase" MinHeight="200" MinWidth="200" MaxHeight="1080" MaxWidth="1920" >
+             MinHeight="250" MinWidth="400" >
+    <Grid Name="GridBase"  MaxHeight="1080" MaxWidth="1920"  Margin="1,2,1,1">
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition  Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition MinHeight="26" MaxHeight="26"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" Width="200"></ColumnDefinition>
+            <ColumnDefinition MinWidth="100" Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!--ПАНЕЛЬ ИНСТРУМЕНТОВ-->
+        <ToolBarPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"  Margin="1,1,1,1"  
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="LightGray">
+                     
+            <ToolBarTray Orientation="Horizontal" 
+                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                
+                <ToolBar VerticalAlignment="Stretch" Margin="-3,0,0,0"
+                         Width="{Binding ElementName=GridBase, Path=ActualWidth,Mode=OneWay}"
+                         BorderBrush="Black" BorderThickness="1"  Background="LightGray"
+                         AllowDrop="False" 
+                         >
+                    <Button Name="ButtonAddStick"  
+                            Click="ButtonAddStick_Click" 
+                            HorizontalAlignment="Left" VerticalAlignment="Stretch" 
+                            MinHeight="20" MaxHeight="20" MinWidth="70" Margin="1,1,1,1"
+                            BorderBrush="Black" BorderThickness="1" Background="LightGray">
+                        <TextBlock Text="+ МП"></TextBlock>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                    <Button Name="ButtonAddStick1" 
+                            HorizontalAlignment="Left" VerticalAlignment="Stretch" 
+                            MinHeight="20" MaxHeight="20" MinWidth="70" Margin="1,1,1,1"
+                            BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="- МП"></TextBlock>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                    <Button Name="ButtonAddStick2"  
+                            HorizontalAlignment="Left" VerticalAlignment="Stretch" 
+                            MinHeight="20" MaxHeight="20" MinWidth="70" Margin="1,1,1,1"
+                            BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Setting"></TextBlock>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </ToolBar>
+                
+            </ToolBarTray>
+        </ToolBarPanel>
+
+        <!--ОСНОВНОЕ ТЕЛО-->
+        <DataGrid Name="MzStickGrid" Grid.Column="0" Grid.Row="1" Margin="1,1,1,1"
+            BorderBrush="Black" BorderThickness="1"  Background="LightGray">
+            <DataGrid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+
+        <DataGrid Name="MzZonekGrid" Grid.Column="1" Grid.Row="1" Margin="1,1,1,1"
+            BorderBrush="Black" BorderThickness="1"  Background="LightGray">
+            <DataGrid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
 
 
-        <Button Name="ButtonAddStick" Grid.Column="0"  Grid.Row="1"  Click="ButtonAddStick_Click" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" MinHeight="50" MinWidth="150">            
-        </Button>
+        <!--СТРОКА СОСТОЯНИЯ-->
+        <StatusBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="1,1,1,1"
+                   BorderBrush="Black" BorderThickness="1"  Background="LightGray">
+            <StatusBar.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </StatusBar.Resources>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" 
-                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="10">
-            <StackPanel Opacity="10">
-                <TextBlock
-                           FontSize="20" Foreground="Aquamarine"
-                           Text="Высота   = ">
+            <StatusBarItem >
+                <TextBlock Text="Ширина х Высота =>  "></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem >
+                <TextBlock Text="{Binding ElementName=GridBase, Path=ActualWidth,Mode=OneWay}"></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem >
+                <TextBlock Text=" х "></TextBlock>
+            </StatusBarItem>
 
-                </TextBlock>
-                <TextBlock 
-                       FontSize="20" Foreground="Aquamarine"
-                           Text="Ширина =  ">
+            <StatusBarItem >
+                <TextBlock Text="{Binding ElementName=GridBase, Path=ActualHeight,Mode=OneWay}"></TextBlock>
+            </StatusBarItem>
 
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Opacity="10">
-                <TextBlock 
-                           FontSize="20" Foreground="Aquamarine"
-                           Text="{Binding ElementName=GridBase, Path=ActualHeight,Mode=OneWay}">
-            
-                </TextBlock>
-                <TextBlock 
-                       FontSize="20" Foreground="Aquamarine"
-                       Text="{Binding ElementName=GridBase, Path=ActualWidth,Mode=OneWay}">
-
-                </TextBlock>
-            </StackPanel>
-            
-        </StackPanel>
+        </StatusBar>
+        
 
     </Grid>
 </UserControl>
