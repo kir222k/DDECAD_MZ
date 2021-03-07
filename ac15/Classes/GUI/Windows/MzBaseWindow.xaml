@@ -5,17 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDECAD.MZ.Classes.GUI.Windows"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             >
+    <Grid Name="GridBase" MinHeight="200" MinWidth="200" MaxHeight="1080" MaxWidth="1920" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"
-                        ></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
 
-        <Button Name="ButtonAddStick" Grid.Column="0"  Grid.Row="1"  Click="ButtonAddStick_Click">            
+        <Button Name="ButtonAddStick" Grid.Column="0"  Grid.Row="1"  Click="ButtonAddStick_Click" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" MinHeight="50" MinWidth="150">            
         </Button>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="10">
+            <StackPanel Opacity="10">
+                <TextBlock
+                           FontSize="20" Foreground="Aquamarine"
+                           Text="Высота   = ">
+
+                </TextBlock>
+                <TextBlock 
+                       FontSize="20" Foreground="Aquamarine"
+                           Text="Ширина =  ">
+
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Opacity="10">
+                <TextBlock 
+                           FontSize="20" Foreground="Aquamarine"
+                           Text="{Binding ElementName=GridBase, Path=ActualHeight,Mode=OneWay}">
             
+                </TextBlock>
+                <TextBlock 
+                       FontSize="20" Foreground="Aquamarine"
+                       Text="{Binding ElementName=GridBase, Path=ActualWidth,Mode=OneWay}">
+
+                </TextBlock>
+            </StackPanel>
+            
+        </StackPanel>
+
     </Grid>
 </UserControl>
