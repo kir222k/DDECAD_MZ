@@ -67,7 +67,7 @@ namespace DDECAD.MZ
                     //Ориентация кнопки.
                     ribButtonOrientation = Orientation.Vertical,
                     //Показать картинку.
-                    showImage = true,
+                    showImage = false,
                     //Имя файла большой картинки.
                     ribButtonLargeImageName = "image_large.png",
                     //Имя файла малой картинки. 
@@ -87,7 +87,7 @@ namespace DDECAD.MZ
                     //Ориентация кнопки.
                     ribButtonOrientation = Orientation.Vertical,
                     //Показать картинку.
-                    showImage = true,
+                    showImage = false,
                     //Имя файла большой картинки.
                     ribButtonLargeImageName = "image_large.png",
                     //Имя файла малой картинки. 
@@ -107,7 +107,7 @@ namespace DDECAD.MZ
                     //Ориентация кнопки.
                     ribButtonOrientation = Orientation.Vertical,
                     //Показать картинку.
-                    showImage = true,
+                    showImage = false,
                     //Имя файла большой картинки.
                     ribButtonLargeImageName = "image_large.png",
                     //Имя файла малой картинки. 

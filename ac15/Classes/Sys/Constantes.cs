@@ -18,5 +18,6 @@ namespace DDECAD.MZ
         /// </value>
         internal const string ConstNameCustomApp = "DDECAD-MZ";
         //internal const string ConstPathCustomApp = Assembly.GetExecutingAssembly().Location;
+        //
     }
 }

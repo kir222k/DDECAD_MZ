@@ -170,8 +170,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ac15\DictionaryBaseWpfControl.xaml">
-      <Link>DictionaryBaseWpfControl.xaml</Link>
+    <Page Include="..\ac15\DictionaryBaseWpfMenuButtons.xaml">
+      <Link>DictionaryBaseWpfMenuButtons.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\ac15\DictionaryBaseWpfMenuButtons2.xaml">
+      <Link>DictionaryBaseWpfMenuButtons2.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
