@@ -32,7 +32,7 @@ namespace DDECAD.MZ.Classes.GUI.Windows
         }
 
         // Метод для вызова самого события (имя прописать в XAML кнопки Click="<метод>"
-        private  void ButtonAddStick_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddStick_Click(object sender, RoutedEventArgs e)
         {
             MzAddStickEvent?.Invoke();
         }

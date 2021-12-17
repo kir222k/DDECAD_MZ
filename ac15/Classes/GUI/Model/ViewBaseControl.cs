@@ -25,7 +25,7 @@ using TIExCAD.Generic;
 
 namespace DDECAD.MZ.GUI.Model
 {
-    internal class ViewBaseControl 
+    internal class ViewBaseControl
     {
 
         internal CustomPaletteSetAcad PalSet;
@@ -36,10 +36,10 @@ namespace DDECAD.MZ.GUI.Model
         /// Создание палитры и подписка на события
         /// </summary>
         /// <remarks>Выполняется из Init.cs </remarks>
-        internal  void ViewBaseCreate()
+        internal void ViewBaseCreate()
         {
             if (PalSet == null)
-            { 
+            {
                 var BaseWindow = new MzBaseWindow();
                 // Подпишем наш метод на событие в форме MzBaseWindow
                 MzAddStickEventHandler MzAddStickDel = new MzAddStickEventHandler(AddStickRealisation);
@@ -48,7 +48,7 @@ namespace DDECAD.MZ.GUI.Model
                 // Создадим палитру и вставим в нее MzBaseWindow
                 //SizePaletteSet SizePal =new SizePaletteSet();
                 PalSet = new CustomPaletteSetAcad(
-                    "DDE", new Guid("A7807F9F-E5EA-449B-840C-AE57491DFE56"), WidthPaletteSet.WidthBig, HeigthPaletteSet.HeightBig, BaseWindow, "Control");
+                    "DDE", new Guid("A7807F9F-E5EA-449B-840C-AE57491DFE56"), 800, 1000, BaseWindow, "Control");
                 PalSet.PaletteSetCreate();
             }
             else

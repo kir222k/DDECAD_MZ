@@ -26,7 +26,7 @@ namespace DDECAD.MZ.GUI.Model
     public class AddStick
     {
         [CommandMethod("ddeaddstickshow")]
-        public  void ShowAddStick()
+        public void ShowAddStick()
         {
             ViewAddStickDialog.AddStickDialog();
         }
@@ -39,7 +39,7 @@ namespace DDECAD.MZ.GUI.Model
             TaskDialog AcWincTaskDialog = new TaskDialog();
 
             //AcWincTaskDialog.
-            
+
             AcWincTaskDialog.Show();
 
             /*

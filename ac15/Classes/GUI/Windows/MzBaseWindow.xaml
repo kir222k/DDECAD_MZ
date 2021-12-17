@@ -67,7 +67,7 @@
                     <Button Name="ButtonSetting"  
                             MinHeight="22" MaxHeight="22" MinWidth="70" Margin="1,1,1,1"
                             Style="{DynamicResource ButtonStyleToolBar}">
-                        <TextBlock Text="Настроки"></TextBlock>
+                        <TextBlock Text="Настройки"></TextBlock>
                         <Button.Resources>
                             <Style  TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>

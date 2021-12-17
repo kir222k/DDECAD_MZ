@@ -27,7 +27,7 @@ namespace DDECAD.MZ.Classes.Sys
             foreach (Document Adoc in AcadApp.DocumentManager)
             {
 
-                
+
                 AcSM.SendStringDebugStars(new List<string> {
 
                     Adoc.ToString(),
@@ -40,7 +40,7 @@ namespace DDECAD.MZ.Classes.Sys
                 });
             }
 
-          
+
         }
 
     }

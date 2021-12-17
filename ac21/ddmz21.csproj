@@ -47,7 +47,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\..\..\..\distr\lib\ac21\</OutputPath>
-    <DefineConstants>TRACE;ddac21</DefineConstants>
+    <DefineConstants>TRACE;ac21</DefineConstants>
     <Optimize>true</Optimize>
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>7.3</LangVersion>
@@ -99,48 +99,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ac15\Classes\AcadEvents\AcadComponentManagerInit.cs">
-      <Link>Classes\AcadEvents\AcadComponentManagerInit.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\AcadEvents\AcadSystemVarChanged.cs">
-      <Link>Classes\AcadEvents\AcadSystemVarChanged.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Model\ViewAddStickDialog.cs">
-      <Link>Classes\GUI\Model\ViewAddStickDialog.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Model\ViewBaseControl.cs">
-      <Link>Classes\GUI\Model\ViewBaseControl.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Ribbon\RibTabMzBuild.cs">
-      <Link>Classes\GUI\Ribbon\RibTabMzBuild.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml.cs">
-      <Link>Classes\GUI\Windows\DialogWindow.xaml.cs</Link>
-      <DependentUpon>DialogWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Windows\MzAddStickControl.xaml.cs">
-      <Link>Classes\GUI\Windows\MzAddStickControl.xaml.cs</Link>
-      <DependentUpon>MzAddStickControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\ac15\Classes\GUI\Windows\MzBaseWindow.xaml.cs">
-      <Link>Classes\GUI\Windows\MzBaseWindow.xaml.cs</Link>
-      <DependentUpon>MzBaseWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\ac15\Classes\Init.cs">
-      <Link>Classes\Init.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\Sys\Constantes.cs">
-      <Link>Classes\Sys\Constantes.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\Sys\Enums.cs">
-      <Link>Classes\Sys\Enums.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\Sys\StaticObjects.cs">
-      <Link>Classes\Sys\StaticObjects.cs</Link>
-    </Compile>
-    <Compile Include="..\ac15\Classes\Sys\WindowsCollection.cs">
-      <Link>Classes\Sys\WindowsCollection.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -153,33 +111,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml">
-      <Link>Classes\GUI\Windows\DialogWindow.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ac15\Classes\GUI\Windows\MzAddStickControl.xaml">
-      <Link>Classes\GUI\Windows\MzAddStickControl.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ac15\Classes\GUI\Windows\MzBaseWindow.xaml">
-      <Link>Classes\GUI\Windows\MzBaseWindow.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ac15\DictionaryBaseWpfMenuButtons.xaml">
-      <Link>DictionaryBaseWpfMenuButtons.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ac15\DictionaryBaseWpfMenuButtons2.xaml">
-      <Link>DictionaryBaseWpfMenuButtons2.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,10 +25,10 @@ namespace DDECAD.MZ
     internal class RibbonTabBuildDDEMZ
     {
 
-        private ViewBaseControl ViewBase;
+        private readonly ViewBaseControl ViewBase;
 
         internal RibbonTabBuildDDEMZ() { }
-        internal RibbonTabBuildDDEMZ (ViewBaseControl viewBasePaletteSet) { ViewBase = viewBasePaletteSet; }
+        internal RibbonTabBuildDDEMZ(ViewBaseControl viewBasePaletteSet) { ViewBase = viewBasePaletteSet; }
 
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace DDECAD.MZ
             else
             {
                 AcadSendMess AcSM = new AcadSendMess();
-                AcSM.SendStringDebugStars(new List<string> {"Требуется перезапустить AutoCAD" });
+                AcSM.SendStringDebugStars(new List<string> { "Требуется перезапустить AutoCAD" });
 
             }
         }
@@ -153,10 +153,10 @@ internal static class RibbonTabButtonHandlers
 
     internal static void MzZonesFormShow()
     {
-        
+
         AcadSendMess AcSM = new AcadSendMess();
         AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzZonesFormShow" });
-       
+
 
 
     }
