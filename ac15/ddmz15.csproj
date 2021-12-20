@@ -95,6 +95,9 @@
     <Compile Include="Classes\GUI\Windows\MzBaseWindow.xaml.cs">
       <DependentUpon>MzBaseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GUI\Windows\WindowTest.xaml.cs">
+      <DependentUpon>WindowTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Init.cs" />
     <Compile Include="Classes\Sys\Constantes.cs" />
     <Compile Include="Classes\Sys\Enums.cs" />
@@ -127,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Classes\GUI\Windows\WindowTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DictionaryBaseWpfMenuButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +142,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_standart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

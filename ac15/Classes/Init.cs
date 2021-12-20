@@ -91,7 +91,7 @@ namespace DDECAD.MZ
     }
 
 
-    //#if ac21
+//#if ddac22
     public class TestAcadSend
     {
         [CommandMethod("ddetest")]
@@ -107,7 +107,7 @@ namespace DDECAD.MZ
                     });
         }
     }
-    //#endif
+//#endif
 
     /// <summary>
     /// Дествия при загрузки сборки.
@@ -158,7 +158,15 @@ namespace DDECAD.MZ
         {
             // 
             // Подключим автосоздание вкладки ленты.
-            AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandler();
+            AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon();
+
+            // Подключим автосоздание меню 
+            AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu();
+
+
+            // Подключим автосоздание панелей инструментов 
+
+
 
             // ИЗМЕНЕНИЯ СИСТЕМНЫХ ПЕРЕМЕННЫХ
             // Подключим пересоздание вкладки ленты.
