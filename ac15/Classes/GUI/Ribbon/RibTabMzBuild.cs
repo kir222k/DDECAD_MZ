@@ -59,6 +59,7 @@ namespace DDECAD.MZ
 
             /// Объект для работы с лентой.
             CreateRibTabSpeed CrTabSpeed = new CreateRibTabSpeed();
+            
 
             #region ПАНЕЛЬ 1
             //DelegateRibButtonHandler DelBtn1 = new DelegateRibButtonHandler(MzSticksFormShow);
