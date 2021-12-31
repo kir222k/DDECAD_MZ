@@ -108,7 +108,7 @@ namespace DDECAD.MZ
         }
     }
 //#endif
-//
+// //
 
     /// <summary>
     /// Дествия при загрузки сборки.
