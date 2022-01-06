@@ -5,20 +5,11 @@
 // КОНСТРУКТОРЫ
 // МЕТОДЫ
 
-
-using System;
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.ApplicationServices;
 using System.Collections.Generic;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.EditorInput;
-using System.Reflection;
-using Autodesk.Windows;
-using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
-using TIExCAD;
-using TIExCAD.Generic;
+using Autodesk.AutoCAD.Runtime;
 using DDECAD.MZ.GUI.Model;
+using System.Reflection;
+using TIExCAD.Generic;
 
 
 // This line is not mandatory, but improves loading performances, чтобы это не значило(!)
@@ -84,14 +75,12 @@ namespace DDECAD.MZ
         /// </summary>
         void IExtensionApplication.Terminate()
         {
-
-
         }
         //#endif
     }
 
 
-//#if ddac22
+#if DEBUG
     public class TestAcadSend
     {
         [CommandMethod("ddetest")]
@@ -107,8 +96,7 @@ namespace DDECAD.MZ
                     });
         }
     }
-//#endif
-// //
+#endif
 
     /// <summary>
     /// Дествия при загрузки сборки.
@@ -123,15 +111,13 @@ namespace DDECAD.MZ
 
         internal static void InitOne()
         {
-            // Сообщение в ком строку AutoCAD
+#if DEBUG
             AcadSendMess AcSM = new AcadSendMess();
-            AcSM.SendStringDebugStars(new List<string>
-                    {
-                        "DDECAD-MZ - Загружено",
-                        "С# 8.0, VS2019, API .NET AutoCAD",
+            // Сообщение в ком строку AutoCAD
+            AcSM.SendStringDebugStars("DDECAD-MZ");
+#endif
 
-                    });
-
+#if !DEBUG
             // Регистрация сборок в автозагрузке AutoCAD.
             RegtoolsCMDF RegCMD = new RegtoolsCMDF(Constantes.ConstNameCustomApp);
 
@@ -143,13 +129,14 @@ namespace DDECAD.MZ
                 Assembly.GetExecutingAssembly().Location)) // true
                                                            // если регистрация прошла успешно, то уведомляем
             {
-                AcSM.SendStringDebugStars("Приложение зарегистрировано. " +
-                    "\nПри следуюющем запуске AutoCAD будет загружно автоматически!");
+                //AcSM.SendStringDebugStars("Приложение зарегистрировано. " +
+                //    "\nПри следуюющем запуске AutoCAD будет загружно автоматически!");
                 // выведем список зарег приложений, кот в автозагрузке AutoCAD.
                 RegCMD.GetRegistryKeyAppsCMD();
 
             }
             // Иначе ничего не делаем, т.к. наше приложение уже есть в автозагрузке AutoCAD.
+#endif
         }
 
         /// <summary>
@@ -157,24 +144,18 @@ namespace DDECAD.MZ
         /// </summary>
         internal static void BasicEventHadlerlersConnect()
         {
-            // 
             // Подключим автосоздание вкладки ленты.
             AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon();
 
-            // Подключим автосоздание меню 
-            AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu();
-
+            // Подключим автосоздание меню приложения
+            //AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu();
 
             // Подключим автосоздание панелей инструментов 
-
-
 
             // ИЗМЕНЕНИЯ СИСТЕМНЫХ ПЕРЕМЕННЫХ
             // Подключим пересоздание вкладки ленты.
             // В случае вкладки ленты, отслеживается переменная WSCURRENT.
             AcadSystemVarChanged.AcadSystemVariableChanged_ConnectHandler();
-
-
         }
 
         internal static void LoadUserInterface()
@@ -183,22 +164,20 @@ namespace DDECAD.MZ
             // если файла usercadr.ini нет в папке /sys, то загрузка в соотв. с настройками cadr.ini (кот. исп. при инсталяции)
             // usercadr.ini создается при первой запуске окна настроек, или при "сбросить" в окне настроек (заново создается)
 
-            #region ЛЕНТА
-
-            // Загрузка выполняется в методе 
-            // AcadComponentManager_ItemInitialized
-            // Перезагрузка при смене раб. пр. - в методе
-            // AcadSysVarChangedEvHr_WSCURRENT
-            #endregion
-
-
+            // Вкладка ленты. Только в режиме отладки. В релизе - см. автосоздание вкладки
+#if DEBUG
+            RibbonTabBuildDDEMZ RibTab = new RibbonTabBuildDDEMZ();
+            RibTab.RibbonTabBuild();
+#endif
             // Меню
+            MenuBarPopMenu.MenuBarPopMenuCreate();
 
-            // Другие элементы интерфейса
+            // Панель инструментов
+            ToolBar.ToolBarCreate();
 
             // ПАЛИТРА.
             // _ = new ViewBaseControl();
-            
+
 
 
         }

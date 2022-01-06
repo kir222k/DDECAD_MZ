@@ -47,11 +47,13 @@ namespace DDECAD.MZ
                 //    ;
                 //    break;
                 default:
+#if DEBUG
                     AcadSendMess AcSM = new AcadSendMess();
                     AcSM.SendStringDebugStars(new List<string> {
                         "Изменения переменной",
                         $"{e.Name}",
                         "не отслеживается"});
+#endif
                     break;
             }
         }

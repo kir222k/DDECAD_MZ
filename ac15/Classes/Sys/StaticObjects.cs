@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,11 +41,25 @@ namespace DDECAD.MZ
 
     }
 
+    internal static class Pathes
+    {
+        internal static readonly string PathSmallIcon = Path.GetFullPath("u:\\dev\\DDECAD-MZ\\distr\\img\\image_standart.bmp");
+        internal static readonly string PathLargeIcon = Path.GetFullPath("u:\\dev\\DDECAD-MZ\\distr\\img\\image_large.bmp");
+    }
+    /*
+                     SmallIcon= "u:\\dev\\DDECAD-MZ\\distr\\img\\image_standart.png", LargeIcon= "u:\\dev\\DDECAD-MZ\\distr\\img\\image_large.png"});
+
+    */
+
     internal static class CommandToExecute
     {
         internal static readonly string MzInstallDir = "c:\\\\Users\\\\kir\\\\AppData\\\\Roaming\\\\DDECAD-MZ\\\\sys\\\\MZ.VLX";
+        internal static readonly string MzInstallDirMacros = "c:/Users/kir/AppData/Roaming/DDECAD-MZ/sys/MZ.VLX";
 
         internal static readonly string MzLoadVLX= "(load \"" + MzInstallDir + "\")";
+        // (load "c:\\Users\\kir\\AppData\\Roaming\\DDECAD-MZ\\sys\\MZ.VLX")(enex-mz-check-lic-user)
+        internal static readonly string MzLoadVLXMacros = "(load \"" + MzInstallDirMacros + "\")";
+        internal static readonly string MzLoadAllVlxMacros = "(load \"" + MzInstallDir + "\")";
 
         internal static readonly string CmdCheckLicense = "(enex-mz-check-lic-user)";
 

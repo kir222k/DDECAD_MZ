@@ -221,43 +221,47 @@ namespace DDECAD.MZ
 
         }
 
+#if DEBUG
         /// <summary>
         /// Показывает палитру.
         /// </summary>
-        //internal void MzStickFormShowRun()
-        //{
-        //    if (ViewBase != null)
-        //        RibbonTabButtonHandlers.MzSticksFormShow(ViewBase);
-        //    else
-        //    {
-        //        AcadSendMess AcSM = new AcadSendMess();
-        //        AcSM.SendStringDebugStars(new List<string> { "Требуется перезапустить AutoCAD" });
+        internal void MzStickFormShowRun()
+        {
+            if (ViewBase != null)
+                RibbonTabButtonHandlers.MzSticksFormShow(ViewBase);
+            else
+            {
+                AcadSendMess AcSM = new AcadSendMess();
+                AcSM.SendStringDebugStars(new List<string> { "Требуется перезапустить AutoCAD" });
 
-        //    }
-        //}
+            }
+        }
+#endif
     }
+
 
     /// <summary>
     /// Обработчики кнопок ленты.
     /// </summary>
     internal static class RibbonTabButtonHandlers
     {
+#if DEBUG
         /// <summary>
         /// Палитра.
         /// </summary>
         /// <param name="viewBasePaletteSet"></param>
-        //internal static void MzSticksFormShow(ViewBaseControl viewBasePaletteSet)
-        //{
-        //    // Создать и показать палитру
-        //    viewBasePaletteSet.ViewBaseCreate();
-        //}
+        internal static void MzSticksFormShow(ViewBaseControl viewBasePaletteSet)
+        {
+            // Создать и показать палитру
+            viewBasePaletteSet.ViewBaseCreate();
+        }
 
-        //internal static void MzZonesFormShow()
-        //{
-        //    AcadSendMess AcSM = new AcadSendMess();
-        //    AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzZonesFormShow" });
-        //}
-
+        internal static void MzZonesFormShow()
+        {
+            AcadSendMess AcSM = new AcadSendMess();
+            AcSM.SendStringDebugStars(new List<string> { "Обработчик", "MzZonesFormShow" });
+        }
+#endif
 
         /// <summary>
         /// Вызов LSP "проеверка лицензии".
@@ -325,6 +329,8 @@ namespace DDECAD.MZ
             acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(cmd + " ", true, false, false);
         }
     }
+
+
 
 }
 

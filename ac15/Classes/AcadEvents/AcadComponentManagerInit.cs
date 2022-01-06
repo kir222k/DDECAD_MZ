@@ -37,15 +37,19 @@ namespace DDECAD.MZ
 
         /// <summary>
         /// Подключение обоработчика к событию загрузки меню, для автоподключения нашего меню.
+        /// Но есть один нюанс: ApplicationMenu - это меню ПРИЛОЖЕНИЯ - см. где "cохранить как" )
         /// </summary>
         internal static void AcadComponentManagerInit_ConnectHandlerMenu()
         {
-        //    ComponentManager.ApplicationMenu.Opening +=
-        //new EventHandler<EventArgs>(ApplicationMenu_Opening);
 
             ComponentManager.ApplicationMenu.Opening +=
                 new EventHandler<EventArgs>(ApplicationMenu_Opening);
         }
+
+
+
+
+
 
 
 
@@ -83,11 +87,13 @@ namespace DDECAD.MZ
             if (menu != null && menu.MenuContent != null)
             {
                 // Create our Application Menu Item
-                ApplicationMenuItem mi = new ApplicationMenuItem();
-                mi.Text = "DDECAD-MZ";
-                mi.Description = "MZ";
-                //mi.LargeImage = "image_large.png";
-                mi.ShowImage = false;
+                ApplicationMenuItem mi = new ApplicationMenuItem
+                {
+                    Text = "DDECAD-MZ",
+                    Description = "MZ",
+                    //mi.LargeImage = "image_large.png";
+                    ShowImage = false
+                };
                 // Attach the handler to fire out command
                 //mi.CommandHandler = new AutoCADCommandHandler(bpCmd);
                 // Add it to the menu content

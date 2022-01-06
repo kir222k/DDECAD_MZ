@@ -19,5 +19,18 @@ namespace DDECAD.MZ
         internal const string ConstNameCustomApp = "DDECAD-MZ";
         //internal const string ConstPathCustomApp = Assembly.GetExecutingAssembly().Location;
         //
+        /*
+         * 
+         * 
+                    AcSM.SendStringDebugStars(new List<string>
+                    {
+                        "DDECAD-MZ - Загружено",
+                        "С# 8.0, VS2019, API .NET AutoCAD",
+
+                    });
+
+        */
+
+
     }
 }

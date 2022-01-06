@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -34,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ac15, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -83,9 +85,11 @@
   <ItemGroup>
     <Compile Include="Classes\AcadEvents\AcadComponentManagerInit.cs" />
     <Compile Include="Classes\AcadEvents\AcadSystemVarChanged.cs" />
+    <Compile Include="Classes\GUI\MenuPopup\MenuBarPopMenu.cs" />
     <Compile Include="Classes\GUI\Model\ViewAddStickDialog.cs" />
     <Compile Include="Classes\GUI\Model\ViewBaseControl.cs" />
     <Compile Include="Classes\GUI\Ribbon\RibTabMzBuild.cs" />
+    <Compile Include="Classes\GUI\Toolbar\ToolBar.cs" />
     <Compile Include="Classes\GUI\Windows\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
@@ -149,5 +153,6 @@
   <ItemGroup>
     <None Include="Resources\image_standart.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

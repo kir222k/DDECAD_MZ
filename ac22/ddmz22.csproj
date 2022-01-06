@@ -103,6 +103,9 @@
     <Compile Include="..\ac15\Classes\AcadEvents\AcadSystemVarChanged.cs">
       <Link>Classes\AcadEvents\AcadSystemVarChanged.cs</Link>
     </Compile>
+    <Compile Include="..\ac15\Classes\GUI\MenuPopup\MenuBarPopMenu.cs">
+      <Link>Classes\GUI\MenuPopup\MenuBarPopMenu.cs</Link>
+    </Compile>
     <Compile Include="..\ac15\Classes\GUI\Model\ViewAddStickDialog.cs">
       <Link>Classes\GUI\Model\ViewAddStickDialog.cs</Link>
     </Compile>
@@ -111,6 +114,9 @@
     </Compile>
     <Compile Include="..\ac15\Classes\GUI\Ribbon\RibTabMzBuild.cs">
       <Link>Classes\GUI\Ribbon\RibTabMzBuild.cs</Link>
+    </Compile>
+    <Compile Include="..\ac15\Classes\GUI\Toolbar\ToolBar.cs">
+      <Link>Classes\GUI\Toolbar\ToolBar.cs</Link>
     </Compile>
     <Compile Include="..\ac15\Classes\GUI\Windows\DialogWindow.xaml.cs">
       <Link>Classes\GUI\Windows\DialogWindow.xaml.cs</Link>
@@ -123,6 +129,10 @@
     <Compile Include="..\ac15\Classes\GUI\Windows\MzBaseWindow.xaml.cs">
       <Link>Classes\GUI\Windows\MzBaseWindow.xaml.cs</Link>
       <DependentUpon>MzBaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\ac15\Classes\GUI\Windows\WindowTest.xaml.cs">
+      <Link>Classes\GUI\Windows\WindowTest.xaml.cs</Link>
+      <DependentUpon>WindowTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="..\ac15\Classes\Init.cs">
       <Link>Classes\Init.cs</Link>
@@ -154,6 +164,11 @@
     </Page>
     <Page Include="..\ac15\Classes\GUI\Windows\MzBaseWindow.xaml">
       <Link>Classes\GUI\Windows\MzBaseWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\ac15\Classes\GUI\Windows\WindowTest.xaml">
+      <Link>Classes\GUI\Windows\WindowTest.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
