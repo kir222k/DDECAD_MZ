@@ -20,16 +20,21 @@ using TIExCAD.Generic;
 using DDECAD.MZ.GUI.Model; 
 using DDECAD.MZ.Classes.GUI.Windows;
 
+#if DEBUG
+
+[assembly: CommandClass(typeof(DDECAD.MZ.ToolbarTest))]
+#endif
+
+//[assembly: CommandClass(typeof(DDECAD.MZ.ToolbarCmdSend))]
+
+
 namespace DDECAD.MZ
 {
     internal static class ToolBar
     {
         internal static void ToolBarCreate()
         {
-            //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadAllVlxMacros + " ", true, false, false);
-
             var TBar = new TieToolbar();
-
             var ListTBarButtons = new List<ToolbarButtItem>();
 
             ListTBarButtons.Add(new ToolbarButtItem
@@ -37,7 +42,7 @@ namespace DDECAD.MZ
                 Index = 0,
                 Name = "Проверить лицензию",
                 HelpString = "Проверка/получение лицензии",
-                Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdCheckLicense + " ",
+                Macros = "MzTbarCmdCheckLic" + " ",
                 SmallIcon = Pathes.PathSmallIcon,
                 LargeIcon = Pathes.PathLargeIcon
             });
@@ -47,7 +52,7 @@ namespace DDECAD.MZ
                 Index = 1,
                 Name = "Удалить DDECAD - MZ",
                 HelpString = "Удалить DDECAD-MZ",
-                Macros = "DDECAD-MZ-UNREG" + " ",
+                Macros = "DDECADMZUNREG" + " ",
                 SmallIcon = Pathes.PathSmallIcon,
                 LargeIcon = Pathes.PathLargeIcon
             });
@@ -57,7 +62,7 @@ namespace DDECAD.MZ
                 Index = 2,
                 Name = "Установить МП",
                 HelpString = "Установить МП",
-                Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdSetStick + " ",
+                Macros = "MzTbarCmdSetStick" + " ",
                 SmallIcon = Pathes.PathSmallIcon,
                 LargeIcon = Pathes.PathLargeIcon
             });
@@ -67,7 +72,7 @@ namespace DDECAD.MZ
                 Index = 3,
                 Name = "Построить зону",
                 HelpString = "Построить зону",
-                Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdBuildZone + " ",
+                Macros = "MzTbarCmdBuildZone" + " ",
                 SmallIcon = Pathes.PathSmallIcon,
                 LargeIcon = Pathes.PathLargeIcon
             });
@@ -77,27 +82,48 @@ namespace DDECAD.MZ
                 Index = 4,
                 Name = "Перестроить зону",
                 HelpString = "Перестроить зону",
-                Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdReBuildZone + " ",
+                Macros = "MzTbarCmdReBuildZone" + " ",
                 SmallIcon = Pathes.PathSmallIcon,
                 LargeIcon = Pathes.PathLargeIcon
             });
 
-
             TBar.ToolbarCreate("DDECAD-MZ", ListTBarButtons);
-
-
-
             // u:\dev\DDECAD-MZ\distr\img\image_standart.png
         }
     }
+
+
+    //public static class ToolbarCmdSend
+    //{
+    //    [CommandMethod("MzTbarCmdCheckLic")]
+    //    public static void TbarCmdCheckLic()
+    //    {
+    //        RibbonTabButtonHandlers.MzCheckLicense();
+            
+    //    }
+    //}
+
+
+
+
+#if DEBUG
+    public static class ToolbarTest
+    {
+        [CommandMethod("tiexToolbarTestCreate")]
+        public static void ToolbarTestCreate()
+        {
+            ToolBar.ToolBarCreate();
+        }
+
+        [CommandMethod("tiexToolbarTestDelete")]
+        public static void ToolbarTestDelete()
+        {
+            var TBar = new TieToolbar();
+            TBar.ToolbarRemove("DDECAD-MZ");
+        }
+    }
+#endif
+
 }
-/*
-                new MenuPopItem { Name = "Проверить лицензию", Macros = CommandToExecute.CmdCheckLicense + " " },
-                new MenuPopItem { Name = "Удалить DDECAD-MZ", Macros = "DDECAD-MZ-UNREG" + " " },
 
 
-                new MenuPopItem { Name = "Установить МП", Macros = CommandToExecute.CmdSetStick + " " },
-                new MenuPopItem { Name = "Построить зону", Macros = CommandToExecute.CmdBuildZone + " " },
-                new MenuPopItem { Name = "Перестроить зону", Macros = CommandToExecute.CmdReBuildZone + " " }
-
-*/

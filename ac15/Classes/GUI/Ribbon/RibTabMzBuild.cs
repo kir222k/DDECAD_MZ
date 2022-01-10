@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
-
+using System.Reflection;
 //using ac15.Generic;
 // Acad
 using Autodesk.AutoCAD.Runtime;
@@ -19,6 +20,9 @@ using TIExCAD;
 using TIExCAD.Generic;
 using DDECAD.MZ.GUI.Model; // DDECAD.MZ.GUI.Model
 using DDECAD.MZ.Classes.GUI.Windows;
+
+[assembly: CommandClass(typeof(DDECAD.MZ.RibbonTabButtonHandlers))]
+
 
 namespace DDECAD.MZ
 {
@@ -107,9 +111,9 @@ namespace DDECAD.MZ
                     //Показать картинку.
                     showImage = true,
                     //Имя файла большой картинки.
-                    ribButtonLargeImageName = "image_large.png",
+                    ribButtonLargeImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_large.png"),
                     //Имя файла малой картинки. 
-                    ribButtonImageName = "image_standart.png",
+                    ribButtonImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_standart.png"),
                     //Экземпляр делегата
                     delegateRibBtnEv = RibbonTabButtonHandlers.MzCheckLicense // GetStaticInfo.SendMessToAcad_test1
                  },
@@ -130,9 +134,9 @@ namespace DDECAD.MZ
                     //Показать картинку.
                     showImage = true,
                     //Имя файла большой картинки.
-                    ribButtonLargeImageName = "image_large.png",
+                    ribButtonLargeImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_large.png"),
                     //Имя файла малой картинки. 
-                    ribButtonImageName = "image_standart.png",
+                    ribButtonImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_standart.png"),
                     //Экземпляр делегата
                     delegateRibBtnEv = RibbonTabButtonHandlers.MzExcludeFromRegApp // GetStaticInfo.SendMessToAcad_test1
                 },
@@ -161,9 +165,9 @@ namespace DDECAD.MZ
                     //Показать картинку.
                     showImage = true,
                     //Имя файла большой картинки.
-                    ribButtonLargeImageName = "image_large.png",
+                    ribButtonLargeImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_large.png"),
                     //Имя файла малой картинки. 
-                    ribButtonImageName = "image_standart.png",
+                    ribButtonImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_standart.png"),
                     //Экземпляр делегата
                     delegateRibBtnEv = RibbonTabButtonHandlers.MzSetStick // GetStaticInfo.SendMessToAcad_test1
                 },
@@ -184,9 +188,9 @@ namespace DDECAD.MZ
                     //Показать картинку.
                     showImage = true,
                     //Имя файла большой картинки.
-                    ribButtonLargeImageName = "image_large.png",
+                    ribButtonLargeImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_large.png"),
                     //Имя файла малой картинки. 
-                    ribButtonImageName = "image_standart.png",
+                    ribButtonImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_standart.png"),
                     //Экземпляр делегата
                     delegateRibBtnEv = RibbonTabButtonHandlers.MzBuildZone // GetStaticInfo.SendMessToAcad_test1
                 },
@@ -207,9 +211,9 @@ namespace DDECAD.MZ
                     //Показать картинку.
                     showImage = true,
                     //Имя файла большой картинки.
-                    ribButtonLargeImageName = "image_large.png",
+                    ribButtonLargeImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_large.png"),
                     //Имя файла малой картинки. 
-                    ribButtonImageName = "image_standart.png",
+                    ribButtonImageName = Path.GetFullPath(Pathes.GetPathApp() +  "\\image_standart.png"),
                     //Экземпляр делегата
                     delegateRibBtnEv = RibbonTabButtonHandlers.MzReBuildZone // GetStaticInfo.SendMessToAcad_test1
                 }
@@ -225,17 +229,17 @@ namespace DDECAD.MZ
         /// <summary>
         /// Показывает палитру.
         /// </summary>
-        internal void MzStickFormShowRun()
-        {
-            if (ViewBase != null)
-                RibbonTabButtonHandlers.MzSticksFormShow(ViewBase);
-            else
-            {
-                AcadSendMess AcSM = new AcadSendMess();
-                AcSM.SendStringDebugStars(new List<string> { "Требуется перезапустить AutoCAD" });
+        //internal void MzStickFormShowRun()
+        //{
+        //    if (ViewBase != null)
+        //        RibbonTabButtonHandlers.MzSticksFormShow(ViewBase);
+        //    else
+        //    {
+        //        AcadSendMess AcSM = new AcadSendMess();
+        //        AcSM.SendStringDebugStars(new List<string> { "Требуется перезапустить AutoCAD" });
 
-            }
-        }
+        //    }
+        //}
 #endif
     }
 
@@ -243,7 +247,7 @@ namespace DDECAD.MZ
     /// <summary>
     /// Обработчики кнопок ленты.
     /// </summary>
-    internal static class RibbonTabButtonHandlers
+    public static class RibbonTabButtonHandlers
     {
 #if DEBUG
         /// <summary>
@@ -266,17 +270,17 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "проеверка лицензии".
         /// </summary>
-        internal static void MzCheckLicense()
+        [CommandMethod("MzTbarCmdCheckLic")]
+        public static void MzCheckLicense()
         {
-            //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
-            //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdCheckLicense + " ", true, false, false);
             MzLoadVLXnextCmd(CommandToExecute.CmdCheckLicense);
         }
 
         /// <summary>
         /// Отменить регистр. dll и автозагрузку  dll.
         /// </summary>
-        internal static void MzExcludeFromRegApp()
+        [CommandMethod("DDECADMZUNREG")]
+        public static void MzExcludeFromRegApp()
         {
             TIExCAD.Generic.RegGeneric RegGen = new RegGeneric();
             if (!RegGen.GetUnRegisterCustomApp(DDECAD.MZ.Constantes.ConstNameCustomApp))
@@ -289,7 +293,8 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Установить МП".
         /// </summary>
-        internal static void MzSetStick()
+        [CommandMethod("MzTbarCmdSetStick")]
+        public static void MzSetStick()
         {
             //foreach (var item in new List<string>() { CommandToExecute.MzLoadVLX + " ", CommandToExecute.CmdSetStick + " " })
             //{
@@ -302,7 +307,8 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Построить зону".
         /// </summary>
-        internal static void MzBuildZone()
+        [CommandMethod("MzTbarCmdBuildZone")]
+        public static void MzBuildZone()
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdBuildZone + " ", true, false, false);
@@ -312,7 +318,8 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Перестроить зону".
         /// </summary>
-        internal static void MzReBuildZone()
+        [CommandMethod("MzTbarCmdReBuildZone")]
+        public static void MzReBuildZone()
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdReBuildZone + " ", true, false, false);
@@ -325,7 +332,7 @@ namespace DDECAD.MZ
         /// <param name="cmd"> команда LISP в скобочках.</param>
         internal static void MzLoadVLXnextCmd(string cmd)
         {
-            acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
+            acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.LoadMzVlxFile + " ", true, false, false);
             acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(cmd + " ", true, false, false);
         }
     }

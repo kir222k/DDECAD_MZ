@@ -62,6 +62,8 @@ namespace DDECAD.MZ
             // Загрузка интерфейса
             InitThis.LoadUserInterface();
 
+            
+
         }
 
         //#if true
@@ -115,6 +117,13 @@ namespace DDECAD.MZ
             AcadSendMess AcSM = new AcadSendMess();
             // Сообщение в ком строку AutoCAD
             AcSM.SendStringDebugStars("DDECAD-MZ");
+
+            // Assembly.GetExecutingAssembly().Location
+            // CommandToExecute.MzInstallDir
+            AcSM.SendStringDebugStars($"MzInstallDir = {CommandToExecute.LoadMzVlxFile}");
+            //AcSM.SendStringDebugStars($"MzInstallDirMacros = {CommandToExecute.MzInstallDirMacros}");
+            //AcSM.SendStringDebugStars($"MzLoadVLXMacros = {CommandToExecute.MzLoadVLXMacros}");
+            AcSM.SendStringDebugStars($"PathApp = {Pathes.GetPathApp()}");
 #endif
 
 #if !DEBUG
@@ -174,6 +183,8 @@ namespace DDECAD.MZ
 
             // Панель инструментов
             ToolBar.ToolBarCreate();
+
+             
 
             // ПАЛИТРА.
             // _ = new ViewBaseControl();

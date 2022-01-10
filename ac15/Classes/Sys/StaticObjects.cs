@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls;
+using System.Reflection;
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.Windows;
+using AdW = Autodesk.Windows;
+using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace DDECAD.MZ
 {
@@ -43,8 +51,35 @@ namespace DDECAD.MZ
 
     internal static class Pathes
     {
-        internal static readonly string PathSmallIcon = Path.GetFullPath("u:\\dev\\DDECAD-MZ\\distr\\img\\image_standart.bmp");
-        internal static readonly string PathLargeIcon = Path.GetFullPath("u:\\dev\\DDECAD-MZ\\distr\\img\\image_large.bmp");
+        // internal static readonly string PathApp = Assembly.GetExecutingAssembly().Location;
+        // DirectoryInfo dirDLL = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
+        internal static readonly string PathSmallIcon = Path.GetFullPath(GetPathApp() + "\\image_standart.bmp");
+        internal static readonly string PathLargeIcon = Path.GetFullPath(GetPathApp() + "\\image_large.bmp");
+
+        internal static string GetPathApp ()
+        {
+            DirectoryInfo dirDLL = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
+            var pathDir = dirDLL.Parent.FullName;
+            return pathDir;
+        }
+
+        // Возращает строку пути в виде c:\\\\..
+        internal static string GetPathAppForLisp()
+        {
+            //DirectoryInfo dirDLL = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
+            DirectoryInfo dirDLL = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
+            var pathDir = dirDLL.Parent.FullName;
+
+            pathDir = pathDir.Replace("\\", "\\\\");
+
+            return pathDir;
+        }
+
+        internal static readonly string MzVlxFileFullPath = Pathes.GetPathAppForLisp() + "\\\\MZ.VLX";
+
+        internal static readonly string PathLog = GetPathApp() + "\\ddecadmz.log";
+
+
     }
     /*
                      SmallIcon= "u:\\dev\\DDECAD-MZ\\distr\\img\\image_standart.png", LargeIcon= "u:\\dev\\DDECAD-MZ\\distr\\img\\image_large.png"});
@@ -53,13 +88,8 @@ namespace DDECAD.MZ
 
     internal static class CommandToExecute
     {
-        internal static readonly string MzInstallDir = "c:\\\\Users\\\\kir\\\\AppData\\\\Roaming\\\\DDECAD-MZ\\\\sys\\\\MZ.VLX";
-        internal static readonly string MzInstallDirMacros = "c:/Users/kir/AppData/Roaming/DDECAD-MZ/sys/MZ.VLX";
-
-        internal static readonly string MzLoadVLX= "(load \"" + MzInstallDir + "\")";
-        // (load "c:\\Users\\kir\\AppData\\Roaming\\DDECAD-MZ\\sys\\MZ.VLX")(enex-mz-check-lic-user)
-        internal static readonly string MzLoadVLXMacros = "(load \"" + MzInstallDirMacros + "\")";
-        internal static readonly string MzLoadAllVlxMacros = "(load \"" + MzInstallDir + "\")";
+        //internal static readonly string LoadMzVlxFile= "(load \"" + Pathes.MzVlxFileFullPath + "\")";
+        internal static readonly string LoadMzVlxFile = "(load \"" + Pathes.MzVlxFileFullPath + "\")";
 
         internal static readonly string CmdCheckLicense = "(enex-mz-check-lic-user)";
 

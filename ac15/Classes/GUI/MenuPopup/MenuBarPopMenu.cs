@@ -20,6 +20,9 @@ using TIExCAD.Generic;
 using DDECAD.MZ.GUI.Model; // DDECAD.MZ.GUI.Model
 using DDECAD.MZ.Classes.GUI.Windows;
 
+//[assembly: CommandClass(typeof(DDECAD.MZ.MzExecCmd))]
+
+
 namespace DDECAD.MZ
 {
     internal static class MenuBarPopMenu
@@ -39,13 +42,35 @@ namespace DDECAD.MZ
             TieMenubar menubar = new TieMenubar();
             var listMI = new List<MenuPopItem>
             {
-                new MenuPopItem { Name = "Проверить лицензию", Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdCheckLicense + " " },
-                new MenuPopItem { Name = "Удалить DDECAD-MZ", Macros = "DDECAD-MZ-UNREG" + " " },
+                new MenuPopItem 
+                { 
+                    Name = "Проверить лицензию", 
+                    Macros = "MzTbarCmdCheckLic" + " " 
+                },
 
+                new MenuPopItem 
+                { 
+                    Name = "Удалить DDECAD-MZ", 
+                    Macros = "DDECADMZUNREG" + " " 
+                },
 
-                new MenuPopItem { Name = "Установить МП", Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdSetStick + " " },
-                new MenuPopItem { Name = "Построить зону", Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdBuildZone + " " },
-                new MenuPopItem { Name = "Перестроить зону", Macros = CommandToExecute.MzLoadVLXMacros + CommandToExecute.CmdReBuildZone + " " }
+                new MenuPopItem 
+                { 
+                    Name = "Установить МП", 
+                    Macros = "MzTbarCmdSetStick" + " " 
+                },
+
+                new MenuPopItem
+                { 
+                    Name = "Построить зону", 
+                    Macros = "MzTbarCmdBuildZone" + " " 
+                },
+
+                new MenuPopItem 
+                { 
+                    Name = "Перестроить зону", 
+                    Macros = "MzTbarCmdReBuildZone" + " " 
+                }
             };
             menubar.MenubarCreatePopupMenu("DDECAD-MZ", listMI);
 
@@ -53,13 +78,13 @@ namespace DDECAD.MZ
 
     }
 
-    public class MzExecCmd
-    {
-        [CommandMethod("DDECAD-MZ-UNREG")]
-        public void MzExecExcludeFromRegApp ()
-        {
-            RibbonTabButtonHandlers.MzExcludeFromRegApp();
-        }
-    }
+    //public static  class MzExecCmd
+    //{
+    //    [CommandMethod("DDECADMZUNREG")]
+    //    public static void MzExecExcludeFromRegApp ()
+    //    {
+    //        RibbonTabButtonHandlers.MzExcludeFromRegApp();
+    //    }
+    //}
 
 }
