@@ -17,7 +17,7 @@ using Autodesk.AutoCAD.EditorInput;
 using System.Windows.Media.Imaging;
 
 using System.Reflection;
-
+using TIExCAD.Generic;
 using System.IO;
 
 
@@ -33,6 +33,9 @@ namespace DDECAD.MZ
         {
             Autodesk.Windows.ComponentManager.ItemInitialized +=
                 new EventHandler<RibbonItemEventArgs>(AcadComponentManager_ItemInitialized);
+            LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon: " +
+                "подписываем создание вкладки на ленте к событию ItemInitialized", Pathes.PathLog);
+
         }
 
         /// <summary>
@@ -44,24 +47,34 @@ namespace DDECAD.MZ
 
             ComponentManager.ApplicationMenu.Opening +=
                 new EventHandler<EventArgs>(ApplicationMenu_Opening);
+            LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu: " +
+                "подписываем создание меню  к событию ApplicationMenu.Opening", Pathes.PathLog);
+
         }
-
-
-
-
-
-
-
-
-
 
         /// <summary>
         /// Автосоздание вкладки ленты.
         /// </summary>
         internal static void AcadComponentManager_ItemInitialized(object sender, Autodesk.Windows.RibbonItemEventArgs e)
         {
-            RibbonTabBuildDDEMZ RibTab = new RibbonTabBuildDDEMZ();
-            RibTab.RibbonTabBuild();
+            if (Autodesk.Windows.ComponentManager.Ribbon != null) // Если лента вообще доступна.
+            {
+
+                        RibbonTabBuildDDEMZ RibTab = new RibbonTabBuildDDEMZ();
+                LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
+                    "экз. RibbonTabBuildDDEMZ создан", Pathes.PathLog);
+
+                RibTab.RibbonTabBuild();
+                LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
+                    "RibbonTabBuild выполнено", Pathes.PathLog);
+            }
+            else
+            {
+                LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
+                    "Ribbon = NULL! возможно, кад запущен с ранее уст. класс. раб. пространством", Pathes.PathLog);
+            }
+
+
             // Отключить обработчик загрузки ленты, т.к. он вызвается
             // только 1 раз при инициализации DLL.
             ComponentManager.ItemInitialized -=

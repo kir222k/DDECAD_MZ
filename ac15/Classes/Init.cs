@@ -4,9 +4,10 @@
 // СВОЙЙСТВА
 // КОНСТРУКТОРЫ
 // МЕТОДЫ
-
-using System.Collections.Generic;
+using System.IO;
 using Autodesk.AutoCAD.Runtime;
+using System.Collections.Generic;
+using System;
 using DDECAD.MZ.GUI.Model;
 using System.Reflection;
 using TIExCAD.Generic;
@@ -62,7 +63,7 @@ namespace DDECAD.MZ
             // Загрузка интерфейса
             InitThis.LoadUserInterface();
 
-            
+            //LogEasy.WriteLog(this.ToString(), Pathes.PathLog);
 
         }
 
@@ -113,6 +114,7 @@ namespace DDECAD.MZ
 
         internal static void InitOne()
         {
+            StartPrintToLogFile();
 #if DEBUG
             AcadSendMess AcSM = new AcadSendMess();
             // Сообщение в ком строку AutoCAD
@@ -129,9 +131,11 @@ namespace DDECAD.MZ
 #if !DEBUG
             // Регистрация сборок в автозагрузке AutoCAD.
             RegtoolsCMDF RegCMD = new RegtoolsCMDF(Constantes.ConstNameCustomApp);
+            LogEasy.WriteLog("InitOne: " + "Создан экз. RegtoolsCMDF", Pathes.PathLog);
 
             // Проверка регистрации сборки в автозагрузке AutoCAD.
             RegGeneric RegGen = new RegGeneric();
+            LogEasy.WriteLog("InitOne: " + "Создан экз. RegGeneric", Pathes.PathLog);
 
             // Вызывается регистрация сборки: 
             if (RegGen.GetRegisterCustomApp(Constantes.ConstNameCustomApp,
@@ -141,11 +145,28 @@ namespace DDECAD.MZ
                 //AcSM.SendStringDebugStars("Приложение зарегистрировано. " +
                 //    "\nПри следуюющем запуске AutoCAD будет загружно автоматически!");
                 // выведем список зарег приложений, кот в автозагрузке AutoCAD.
-                RegCMD.GetRegistryKeyAppsCMD();
+               // RegCMD.GetRegistryKeyAppsCMD();
 
+                LogEasy.WriteLog("InitOne: " + "Регистрация выполнена", Pathes.PathLog);
             }
             // Иначе ничего не делаем, т.к. наше приложение уже есть в автозагрузке AutoCAD.
+            
 #endif
+
+        }
+
+        private static void StartPrintToLogFile ()
+        {
+            if (LogEasy.GetFileSizeMb(Pathes.PathLog) > Constantes.sizeLogFileMb)
+                LogEasy.DeleteFileLog(Pathes.PathLog);
+
+            string strLog =
+                "\n\n**********************************************************" +
+                "\n** [LOAD]" + DateTime.Now.ToLongTimeString() +
+                "\n** " + Assembly.GetExecutingAssembly().Location  +
+                //"\n******** " + DateTime.Now.ToLongTimeString() + "*******" +
+                "\n**********************************************************";
+            LogEasy.WriteLog(strLog, Pathes.PathLog);
         }
 
         /// <summary>
@@ -155,6 +176,7 @@ namespace DDECAD.MZ
         {
             // Подключим автосоздание вкладки ленты.
             AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon();
+            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "автосоздание вкладки ленты подключено", Pathes.PathLog);
 
             // Подключим автосоздание меню приложения
             //AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu();
@@ -165,6 +187,8 @@ namespace DDECAD.MZ
             // Подключим пересоздание вкладки ленты.
             // В случае вкладки ленты, отслеживается переменная WSCURRENT.
             AcadSystemVarChanged.AcadSystemVariableChanged_ConnectHandler();
+            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "пересоздание вкладки ленты подключено", Pathes.PathLog);
+
         }
 
         internal static void LoadUserInterface()
@@ -180,11 +204,12 @@ namespace DDECAD.MZ
 #endif
             // Меню
             MenuBarPopMenu.MenuBarPopMenuCreate();
-
+            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "создано меню", Pathes.PathLog);
+            
             // Панель инструментов
             ToolBar.ToolBarCreate();
+            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "создана панель", Pathes.PathLog);
 
-             
 
             // ПАЛИТРА.
             // _ = new ViewBaseControl();

@@ -63,7 +63,8 @@ namespace DDECAD.MZ
 
             /// Объект для работы с лентой.
             CreateRibTabSpeed CrTabSpeed = new CreateRibTabSpeed();
-            
+            LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
+                "экз. CreateRibTabSpeed создан", Pathes.PathLog);
 
             #region ПАНЕЛЬ 1
             //DelegateRibButtonHandler DelBtn1 = new DelegateRibButtonHandler(MzSticksFormShow);
@@ -143,8 +144,13 @@ namespace DDECAD.MZ
                 #endregion
 
             };
+            LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
+                 "Список из кнопок 1 создан", Pathes.PathLog);
 
             CrTabSpeed.CreateOrModifityRibbonTab("DDECAD-MZ", "ddecadmz", "Настройки", listBtn);
+            LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
+                "CreateOrModifityRibbonTab выполнен", Pathes.PathLog);
+
             #endregion
 
             #region ПАНЕЛЬ 2

@@ -30,7 +30,7 @@ namespace DDECAD.MZ
                     });
 
         */
-
+        internal const float sizeLogFileMb = 5.0f;
 
     }
 }

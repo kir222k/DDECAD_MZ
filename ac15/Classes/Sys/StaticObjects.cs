@@ -63,6 +63,8 @@ namespace DDECAD.MZ
             return pathDir;
         }
 
+        internal static readonly string PathLog = GetPathApp() + "\\ddecadmz.log";
+
         // Возращает строку пути в виде c:\\\\..
         internal static string GetPathAppForLisp()
         {
@@ -77,7 +79,7 @@ namespace DDECAD.MZ
 
         internal static readonly string MzVlxFileFullPath = Pathes.GetPathAppForLisp() + "\\\\MZ.VLX";
 
-        internal static readonly string PathLog = GetPathApp() + "\\ddecadmz.log";
+       
 
 
     }

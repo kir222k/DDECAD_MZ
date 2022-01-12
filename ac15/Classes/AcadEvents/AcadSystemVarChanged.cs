@@ -13,6 +13,11 @@ using acadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using TIExCAD;
 using TIExCAD.Generic;
 
+using System.IO;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls;
+using System.Reflection;
+
 
 namespace DDECAD.MZ
 {
@@ -72,17 +77,21 @@ namespace DDECAD.MZ
                 cmdNames.ToUpper().IndexOf("CUI") >= 0)
                 return;
 
-
             // Создать и загрузить вкладку
-            //SampleCreateRibbonTabClass2 SampleRibTab =
-            //    new SampleCreateRibbonTabClass2();
-            //SampleRibTab.TiexTestRibCreate3();
-            RibbonTabBuildDDEMZ RibTab =
-                new RibbonTabBuildDDEMZ();
-            RibTab.RibbonTabBuild();
+            if (Autodesk.Windows.ComponentManager.Ribbon != null) // если лента инициализирована.
+            {
+                var RibTab = new RibbonTabBuildDDEMZ();
+                RibTab.RibbonTabBuild();
+            }
 
+            // Создать и загрузить меню
+            MenuBarPopMenu.MenuBarPopMenuCreate();
 
-        }
+            LogEasy.WriteLog("Metod: " + "AcadSysVarChangedEvHr_WSCURRENT  " +  "WSCURRENT = "  + 
+                Autodesk.AutoCAD.ApplicationServices.Application.GetSystemVariable("WSCURRENT").ToString(), 
+                Pathes.PathLog);
+
+        }  
 
     }
 
