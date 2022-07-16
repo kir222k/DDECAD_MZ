@@ -131,11 +131,11 @@ namespace DDECAD.MZ
 #if !DEBUG
             // Регистрация сборок в автозагрузке AutoCAD.
             RegtoolsCMDF RegCMD = new RegtoolsCMDF(Constantes.ConstNameCustomApp);
-            LogEasy.WriteLog("InitOne: " + "Создан экз. RegtoolsCMDF", Pathes.PathLog);
+            LogEasy.WriteLog("InitOne: " + "Instance RegtoolsCMDF is created", Pathes.PathLog);
 
             // Проверка регистрации сборки в автозагрузке AutoCAD.
             RegGeneric RegGen = new RegGeneric();
-            LogEasy.WriteLog("InitOne: " + "Создан экз. RegGeneric", Pathes.PathLog);
+            LogEasy.WriteLog("InitOne: " + "Instance RegGeneric is created", Pathes.PathLog);
 
             // Вызывается регистрация сборки: 
             if (RegGen.GetRegisterCustomApp(Constantes.ConstNameCustomApp,
@@ -147,7 +147,7 @@ namespace DDECAD.MZ
                 // выведем список зарег приложений, кот в автозагрузке AutoCAD.
                // RegCMD.GetRegistryKeyAppsCMD();
 
-                LogEasy.WriteLog("InitOne: " + "Регистрация выполнена", Pathes.PathLog);
+                LogEasy.WriteLog("InitOne: " + "Registration is done", Pathes.PathLog);
             }
             // Иначе ничего не делаем, т.к. наше приложение уже есть в автозагрузке AutoCAD.
             
@@ -176,7 +176,7 @@ namespace DDECAD.MZ
         {
             // Подключим автосоздание вкладки ленты.
             AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon();
-            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "автосоздание вкладки ленты подключено", Pathes.PathLog);
+            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "Auto-creation of the our Ribbon Tab is connected", Pathes.PathLog);
 
             // Подключим автосоздание меню приложения
             //AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu();
@@ -187,7 +187,7 @@ namespace DDECAD.MZ
             // Подключим пересоздание вкладки ленты.
             // В случае вкладки ленты, отслеживается переменная WSCURRENT.
             AcadSystemVarChanged.AcadSystemVariableChanged_ConnectHandler();
-            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "пересоздание вкладки ленты подключено", Pathes.PathLog);
+            LogEasy.WriteLog("InitOne.BasicEventHadlerlersConnect: " + "Reconstruction of the our RibbonTab is connected", Pathes.PathLog);
 
         }
 
@@ -204,11 +204,11 @@ namespace DDECAD.MZ
 #endif
             // Меню
             MenuBarPopMenu.MenuBarPopMenuCreate();
-            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "создано меню", Pathes.PathLog);
+            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "Menu is created", Pathes.PathLog);
             
             // Панель инструментов
             ToolBar.ToolBarCreate();
-            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "создана панель", Pathes.PathLog);
+            LogEasy.WriteLog("LoadUserInterface.MenuBarPopMenuCreate: " + "ToolPanel is created", Pathes.PathLog);
 
 
             // ПАЛИТРА.

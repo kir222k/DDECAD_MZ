@@ -64,7 +64,7 @@ namespace DDECAD.MZ
             /// Объект для работы с лентой.
             CreateRibTabSpeed CrTabSpeed = new CreateRibTabSpeed();
             LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
-                "экз. CreateRibTabSpeed создан", Pathes.PathLog);
+                "Instance CreateRibTabSpeed is created", Pathes.PathLog);
 
             #region ПАНЕЛЬ 1
             //DelegateRibButtonHandler DelBtn1 = new DelegateRibButtonHandler(MzSticksFormShow);
@@ -145,11 +145,11 @@ namespace DDECAD.MZ
 
             };
             LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
-                 "Список из кнопок 1 создан", Pathes.PathLog);
+                 "Buttons list 1 is created", Pathes.PathLog);
 
             CrTabSpeed.CreateOrModifityRibbonTab("DDECAD-MZ", "ddecadmz", "Настройки", listBtn);
             LogEasy.WriteLog("RibbonTabBuildDDEMZ.RibbonTabBuild: " +
-                "CreateOrModifityRibbonTab выполнен", Pathes.PathLog);
+                "CreateOrModifityRibbonTab is done", Pathes.PathLog);
 
             #endregion
 
@@ -318,6 +318,7 @@ namespace DDECAD.MZ
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdBuildZone + " ", true, false, false);
+            MzLoadVLXnextCmd(CommandToExecute.LoadMzVlxFile);
             MzLoadVLXnextCmd(CommandToExecute.CmdBuildZone);
         }
 
@@ -329,8 +330,22 @@ namespace DDECAD.MZ
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdReBuildZone + " ", true, false, false);
+            MzLoadVLXnextCmd(CommandToExecute.LoadMzVlxFile);
             MzLoadVLXnextCmd(CommandToExecute.CmdReBuildZone);
         }
+
+        /// <summary>
+        /// Вызов LSP "Маркировать зону".
+        /// </summary>
+        [CommandMethod("MzTbarCmdLeader")]
+        public static void MzLeader()
+        {
+            //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
+            //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.CmdReBuildZone + " ", true, false, false);
+            MzLoadVLXnextCmd(CommandToExecute.LoadMzVlxFile);
+            MzLoadVLXnextCmd(CommandToExecute.CmdLeader);
+        }
+
 
         /// <summary>
         /// Загружает VLX файл и выполняет команду в параметрах.

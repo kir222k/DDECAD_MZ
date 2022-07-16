@@ -34,7 +34,7 @@ namespace DDECAD.MZ
             Autodesk.Windows.ComponentManager.ItemInitialized +=
                 new EventHandler<RibbonItemEventArgs>(AcadComponentManager_ItemInitialized);
             LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerRibbon: " +
-                "подписываем создание вкладки на ленте к событию ItemInitialized", Pathes.PathLog);
+                "signing the creation of the RibbonTab for the event ItemInitialized", Pathes.PathLog);
 
         }
 
@@ -48,7 +48,7 @@ namespace DDECAD.MZ
             ComponentManager.ApplicationMenu.Opening +=
                 new EventHandler<EventArgs>(ApplicationMenu_Opening);
             LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManagerInit_ConnectHandlerMenu: " +
-                "подписываем создание меню  к событию ApplicationMenu.Opening", Pathes.PathLog);
+                "Signing the creation of the menu for the event ApplicationMenu.Opening", Pathes.PathLog);
 
         }
 
@@ -62,16 +62,16 @@ namespace DDECAD.MZ
 
                         RibbonTabBuildDDEMZ RibTab = new RibbonTabBuildDDEMZ();
                 LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
-                    "экз. RibbonTabBuildDDEMZ создан", Pathes.PathLog);
+                    "Instance RibbonTabBuildDDEMZ is created", Pathes.PathLog);
 
                 RibTab.RibbonTabBuild();
                 LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
-                    "RibbonTabBuild выполнено", Pathes.PathLog);
+                    "RibbonTabBuild is executed", Pathes.PathLog);
             }
             else
             {
                 LogEasy.WriteLog("AcadComponentManagerInit.AcadComponentManager_ItemInitialized: " +
-                    "Ribbon = NULL! возможно, кад запущен с ранее уст. класс. раб. пространством", Pathes.PathLog);
+                    "Ribbon = NULL! Maybe the Acad was launched with classic workspace", Pathes.PathLog);
             }
 
 

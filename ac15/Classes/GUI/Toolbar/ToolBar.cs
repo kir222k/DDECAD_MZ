@@ -43,8 +43,8 @@ namespace DDECAD.MZ
                 Name = "Проверить лицензию",
                 HelpString = "Проверка/получение лицензии",
                 Macros = "MzTbarCmdCheckLic" + " ",
-                SmallIcon = Pathes.PathSmallIcon,
-                LargeIcon = Pathes.PathLargeIcon
+                SmallIcon = Pathes.PathSmallIconAbout,
+                LargeIcon = Pathes.PathLargeIconAbout
             });
 
             ListTBarButtons.Add(new ToolbarButtItem
@@ -53,8 +53,8 @@ namespace DDECAD.MZ
                 Name = "Удалить DDECAD - MZ",
                 HelpString = "Удалить DDECAD-MZ",
                 Macros = "DDECADMZUNREG" + " ",
-                SmallIcon = Pathes.PathSmallIcon,
-                LargeIcon = Pathes.PathLargeIcon
+                SmallIcon = Pathes.PathSmallIconDelProgram,
+                LargeIcon = Pathes.PathLargeIconDelProgram
             });
 
             ListTBarButtons.Add(new ToolbarButtItem
@@ -63,8 +63,8 @@ namespace DDECAD.MZ
                 Name = "Установить МП",
                 HelpString = "Установить МП",
                 Macros = "MzTbarCmdSetStick" + " ",
-                SmallIcon = Pathes.PathSmallIcon,
-                LargeIcon = Pathes.PathLargeIcon
+                SmallIcon = Pathes.PathSmallIconAddStick,
+                LargeIcon = Pathes.PathLargeIconAddStick
             });
 
             ListTBarButtons.Add(new ToolbarButtItem
@@ -73,8 +73,8 @@ namespace DDECAD.MZ
                 Name = "Построить зону",
                 HelpString = "Построить зону",
                 Macros = "MzTbarCmdBuildZone" + " ",
-                SmallIcon = Pathes.PathSmallIcon,
-                LargeIcon = Pathes.PathLargeIcon
+                SmallIcon = Pathes.PathSmallIconZoneDraw,
+                LargeIcon = Pathes.PathLargeIconZoneDraw
             });
 
             ListTBarButtons.Add(new ToolbarButtItem
@@ -83,8 +83,18 @@ namespace DDECAD.MZ
                 Name = "Перестроить зону",
                 HelpString = "Перестроить зону",
                 Macros = "MzTbarCmdReBuildZone" + " ",
-                SmallIcon = Pathes.PathSmallIcon,
-                LargeIcon = Pathes.PathLargeIcon
+                SmallIcon = Pathes.PathSmallIconZoneReDraw,
+                LargeIcon = Pathes.PathLargeIconZoneReDraw
+            });
+
+            ListTBarButtons.Add(new ToolbarButtItem
+            {
+                Index = 5,
+                Name = "Маркировать зону",
+                HelpString = "Маркировать зону",
+                Macros = "MzTbarCmdLeader" + " ",
+                SmallIcon = Pathes.PathSmallIconLeader,
+                LargeIcon = Pathes.PathLargeIconLeader
             });
 
             TBar.ToolbarCreate("DDECAD-MZ", ListTBarButtons);
