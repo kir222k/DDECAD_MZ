@@ -45,7 +45,7 @@ namespace DDECAD.MZ
                 new MenuPopItem 
                 { 
                     Name = "Проверить лицензию", 
-                    Macros = "MzTbarCmdCheckLic" + " " 
+                    Macros = "MzrCmdLicCh" + " " 
                 },
 
                 new MenuPopItem 
@@ -57,19 +57,19 @@ namespace DDECAD.MZ
                 new MenuPopItem 
                 { 
                     Name = "Установить МП", 
-                    Macros = "MzTbarCmdSetStick" + " " 
+                    Macros = "MzCmdSetRod" + " " 
                 },
 
                 new MenuPopItem
                 { 
                     Name = "Построить зону", 
-                    Macros = "MzTbarCmdBuildZone" + " " 
+                    Macros = "MzCmdBuildPrZone" + " " 
                 },
 
                 new MenuPopItem 
                 { 
                     Name = "Перестроить зону", 
-                    Macros = "MzTbarCmdReBuildZone" + " " 
+                    Macros = "MzCmdReBuildPrZone" + " " 
                 }
             };
             menubar.MenubarCreatePopupMenu("DDECAD-MZ", listMI);

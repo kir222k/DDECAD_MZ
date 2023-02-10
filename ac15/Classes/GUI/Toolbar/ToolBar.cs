@@ -42,7 +42,7 @@ namespace DDECAD.MZ
                 Index = 0,
                 Name = "Проверить лицензию",
                 HelpString = "Проверка/получение лицензии",
-                Macros = "MzTbarCmdCheckLic" + " ",
+                Macros = "MzrCmdLicCh" + " ",
                 SmallIcon = Pathes.PathSmallIconAbout,
                 LargeIcon = Pathes.PathLargeIconAbout
             });
@@ -62,7 +62,7 @@ namespace DDECAD.MZ
                 Index = 2,
                 Name = "Установить МП",
                 HelpString = "Установить МП",
-                Macros = "MzTbarCmdSetStick" + " ",
+                Macros = "MzCmdSetRod" + " ",
                 SmallIcon = Pathes.PathSmallIconAddStick,
                 LargeIcon = Pathes.PathLargeIconAddStick
             });
@@ -72,7 +72,7 @@ namespace DDECAD.MZ
                 Index = 3,
                 Name = "Построить зону",
                 HelpString = "Построить зону",
-                Macros = "MzTbarCmdBuildZone" + " ",
+                Macros = "MzCmdBuildPrZone" + " ",
                 SmallIcon = Pathes.PathSmallIconZoneDraw,
                 LargeIcon = Pathes.PathLargeIconZoneDraw
             });
@@ -82,7 +82,7 @@ namespace DDECAD.MZ
                 Index = 4,
                 Name = "Перестроить зону",
                 HelpString = "Перестроить зону",
-                Macros = "MzTbarCmdReBuildZone" + " ",
+                Macros = "MzCmdReBuildPrZone" + " ",
                 SmallIcon = Pathes.PathSmallIconZoneReDraw,
                 LargeIcon = Pathes.PathLargeIconZoneReDraw
             });
@@ -105,7 +105,7 @@ namespace DDECAD.MZ
 
     //public static class ToolbarCmdSend
     //{
-    //    [CommandMethod("MzTbarCmdCheckLic")]
+    //    [CommandMethod("MzrCmdLicCh")]
     //    public static void TbarCmdCheckLic()
     //    {
     //        RibbonTabButtonHandlers.MzCheckLicense();

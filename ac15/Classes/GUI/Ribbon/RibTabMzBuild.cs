@@ -276,7 +276,7 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "проеверка лицензии".
         /// </summary>
-        [CommandMethod("MzTbarCmdCheckLic")]
+        [CommandMethod("MzrCmdLicCh")]
         public static void MzCheckLicense()
         {
             MzLoadVLXnextCmd(CommandToExecute.CmdCheckLicense);
@@ -299,7 +299,7 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Установить МП".
         /// </summary>
-        [CommandMethod("MzTbarCmdSetStick")]
+        [CommandMethod("MzCmdSetRod")]
         public static void MzSetStick()
         {
             //foreach (var item in new List<string>() { CommandToExecute.MzLoadVLX + " ", CommandToExecute.CmdSetStick + " " })
@@ -313,7 +313,7 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Построить зону".
         /// </summary>
-        [CommandMethod("MzTbarCmdBuildZone")]
+        [CommandMethod("MzCmdBuildPrZone")]
         public static void MzBuildZone()
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
@@ -325,7 +325,7 @@ namespace DDECAD.MZ
         /// <summary>
         /// Вызов LSP "Перестроить зону".
         /// </summary>
-        [CommandMethod("MzTbarCmdReBuildZone")]
+        [CommandMethod("MzCmdReBuildPrZone")]
         public static void MzReBuildZone()
         {
             //acadApp.DocumentManager.MdiActiveDocument.SendStringToExecute(CommandToExecute.MzLoadVLX + " ", true, false, false);
